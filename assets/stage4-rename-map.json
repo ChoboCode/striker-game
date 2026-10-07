@@ -1,0 +1,67 @@
+[
+  {
+    "old": "stage3",
+    "file": "stage4-boss-nightark.png",
+    "sha256": "AA30AE960A590391A7993F20ADFCB80A8B301433DA0C3306D16813BDFB2763A8"
+  },
+  {
+    "old": "stage31",
+    "file": "stage4-patrol-boat-n.png",
+    "sha256": "BC54454F502AA1CB58E6D1B092E81415BCCD66668D0873F1EB0AAE96760087F5"
+  },
+  {
+    "old": "stage32",
+    "file": "stage4-missile-boat-n.png",
+    "sha256": "4A68023D073BAF03F0BB5275FE5C6E7D4D60EFAE8E9EBC0BA76CF0C77EF8CC53"
+  },
+  {
+    "old": "stage33",
+    "file": "stage4-vtol-n.png",
+    "sha256": "A135DB93DB0B8823D53B7D42821633EFD7ED1EB427AE5AADF0C19F2AF031B3BD"
+  },
+  {
+    "old": "stage34",
+    "file": "stage4-missile-boat-nw.png",
+    "sha256": "64891EAC663D84D779D48BCD0AF3FDA06FBEA67A2980C19B67332653143FE4A2"
+  },
+  {
+    "old": "stage35",
+    "file": "stage4-missile-boat-ne.png",
+    "sha256": "93D9EE95CDE4673EC8CCABB4945B96F201FF633EA371E90C8DDCC0B406CE6278"
+  },
+  {
+    "old": "stage36",
+    "file": "stage4-patrol-boat-nw.png",
+    "sha256": "48EA1AF891CC5744FFAB09C337C48298E73F9D38972EE3FBCDBB1F826D56808F"
+  },
+  {
+    "old": "stage37",
+    "file": "stage4-patrol-boat-ne.png",
+    "sha256": "33E30AD38E4E2DE2F86C37BDDE24032BDFA010F7ADF68F24D6E2B298ABCC2E75"
+  },
+  {
+    "old": "stage38",
+    "file": "stage4-vtol-l.png",
+    "sha256": "FA3E30DFE487F7439D8308C1E5C1A3985FBED5D82B1D03D428DAADD8D65C914A"
+  },
+  {
+    "old": "staeg39",
+    "file": "stage4-vtol-r.png",
+    "sha256": "3E33C3D631ADB5A386AF5FFFB68E6B168875EA9F1AEC3500A69FB1A2FFCC6FC9"
+  },
+  {
+    "old": "stage310",
+    "file": "stage4-artillery-n.png",
+    "sha256": "60567E3A6ED973DD25AC33B72F395945719ED5845A0DB8C6BFD28DB71DC57C3A"
+  },
+  {
+    "old": "stage311",
+    "file": "stage4-artillery-l.png",
+    "sha256": "D8195AE594815AEE772D05FB8506667D78F525A653B92A8B1B640078A74D4F9F"
+  },
+  {
+    "old": "stage312",
+    "file": "stage4-artillery-r.png",
+    "sha256": "48640451D4977AB73E556AC34416077D3964E51ED6BE7A4D0B891E16C8C9E17A"
+  }
+]

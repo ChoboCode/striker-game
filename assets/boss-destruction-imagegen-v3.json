@@ -1,0 +1,58 @@
+[
+  {
+    "key": "caldera-damaged",
+    "file": "caldera-boss-damaged-v1.webp",
+    "width": 768,
+    "prompt": "Use case: precise-object-edit.\nAsset type: exact registered DAMAGED STATE raster sprite for existing original overhead aircraft boss.\nEdit target: supplied CALDERA CROWN sprite. Keep its EXACT overhead orthographic camera, design, silhouette outside target areas, position, scale, same 768:640 canvas aspect ratio, same transparent canvas, same graphite/copper colors and precise panel arrangement. DO NOT redesign this ship, DO NOT borrow other ships or attach arbitrary wreck graphics.\nChange ONLY three original weapon modules: LEFT gun pod INCLUDING ALL three long downward barrels (normalized x .17-.40, y .235-.94), RIGHT mirror pod and ALL its long downward barrels (x .60-.83, y .235-.94), and the central orange reactor (x .415-.585,y .22-.51). Original guns are completely destroyed: physically REMOVE every long intact barrel down to each mounting socket, leaving short jagged bent barrel roots, exposed original dark mounting cavities, cracked matching copper-edged armor, black scorch and broken braces integrated into this exact existing pod. The intact lower long barrels MUST NO LONGER EXIST anywhere. Keep small irregular stubs INSIDE mounting base at y .53-.65, with clear transparency below where original barrels extended. Not a second layer pasted on intact guns. Preserve pod shell outline and upper wing/background metal exactly. Reactor becomes a dark ruptured cavity with cracked original housing and a few dim amber traces, no intact glowing orange glass.\nOutput one complete original fortress with ALL THREE modules in destroyed state so game can replace their regions independently. Everything else must remain pixel-registered: same exact main nose, wings, upward tail, fuselage, red vents and panel lines. Absolutely no flying fragments, falling debris, free metal chunks, smoke, fire, projectiles, rings or glow aura. True transparent background. Same framing and padding as input, no labels/text/watermark or extra objects.",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-726a3dd9-f992-48d4-8023-66b089a85de7.png",
+    "reference": "assets/caldera-boss-v1.png",
+    "regions": {
+      "wingL": [
+        0.16,
+        0.23,
+        0.25,
+        0.73
+      ],
+      "wingR": [
+        0.59,
+        0.23,
+        0.25,
+        0.73
+      ],
+      "core": [
+        0.415,
+        0.22,
+        0.17,
+        0.3
+      ]
+    },
+    "tool": "built-in image_gen",
+    "date": "2026-10-07"
+  },
+  {
+    "key": "boss-heavy-blast",
+    "file": "boss-heavy-blast-v3.webp",
+    "width": 1024,
+    "prompt": "Use case: style-transfer.\nAsset type: production transparent 16-frame explosion animation sprite sheet for original overhead arcade shooter.\nInput image 1 is the exact existing texture, palette, frame progression and overhead camera guide. Image 2 is game metal-art style reference only.\nPrimary request: REDRAW THE EXPLOSION removing ALL solid metal pieces, rocks, shards, panels, rubble, detached hardware and debris from EVERY frame. Only short yellow-orange flames, smoke, soot and fading tiny light embers may remain. Flame and smoke should be hand-painted crisp prerendered 2D arcade VFX seen directly from above, with dark negative gaps, muted charcoal smoke and compact amber highlights matching the existing game. No bulky spherical cinematic fireball, no mushroom, no neon ring, no starburst beams, no cyan halo.\nONE square true-transparent sprite sheet, EXACTLY 4 columns x 4 rows =16 equal cells, sequence left-to-right top-to-bottom. Same centered origin, no labels/grid/background/checkerboard. 12% empty margins in every cell, no crossing between cells.\nFrames 1-3 small ignition, 4-7 expanding short irregular flame lobes separated by dark gaps, 8-10 flame cools to charcoal smoke, 11-13 disjoint soft smoke wisps with little embers, 14-16 sparse dissipating smoke nearly transparent at last. Smooth progressive silhouettes with no reset. No metal or rock in any frame. NO ship/hull/terrain/object or surrounding scene. Pure flame and smoke on real alpha.\nHull ammunition variation: only ivory-yellow hot centers, muted amber-orange fire and charcoal gray smoke. No blue energy.",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-3c9fd8ba-06b1-45b3-92e7-3339c7fed9bf.png",
+    "references": [
+      "assets/boss-heavy-blast-v2.webp",
+      "assets/caldera-boss-v1.png"
+    ],
+    "tool": "built-in image_gen",
+    "date": "2026-10-07"
+  },
+  {
+    "key": "boss-reactor-blast",
+    "file": "boss-reactor-blast-v3.webp",
+    "width": 1024,
+    "prompt": "Use case: style-transfer.\nAsset type: production transparent 16-frame explosion animation sprite sheet for original overhead arcade shooter.\nInput image 1 is the exact existing texture, palette, frame progression and overhead camera guide. Image 2 is game metal-art style reference only.\nPrimary request: REDRAW THE EXPLOSION removing ALL solid metal pieces, rocks, shards, panels, rubble, detached hardware and debris from EVERY frame. Only short yellow-orange flames, smoke, soot and fading tiny light embers may remain. Flame and smoke should be hand-painted crisp prerendered 2D arcade VFX seen directly from above, with dark negative gaps, muted charcoal smoke and compact amber highlights matching the existing game. No bulky spherical cinematic fireball, no mushroom, no neon ring, no starburst beams, no cyan halo.\nONE square true-transparent sprite sheet, EXACTLY 4 columns x 4 rows =16 equal cells, sequence left-to-right top-to-bottom. Same centered origin, no labels/grid/background/checkerboard. 12% empty margins in every cell, no crossing between cells.\nFrames 1-3 small ignition, 4-7 expanding short irregular flame lobes separated by dark gaps, 8-10 flame cools to charcoal smoke, 11-13 disjoint soft smoke wisps with little embers, 14-16 sparse dissipating smoke nearly transparent at last. Smooth progressive silhouettes with no reset. No metal or rock in any frame. NO ship/hull/terrain/object or surrounding scene. Pure flame and smoke on real alpha.\nReactor variation: keep the small icy blue-white central ignition of reference image 1 in frames 1-6, occupying under 10% of visible effect, then cool it fully to amber/charcoal smoke. No blue ring or aura. No additional bright spikes.",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-16873f87-e74c-489a-adaf-7458d41bca44.png",
+    "references": [
+      "assets/boss-reactor-blast-v2.webp",
+      "assets/s5-boss.png"
+    ],
+    "tool": "built-in image_gen",
+    "date": "2026-10-07"
+  }
+]

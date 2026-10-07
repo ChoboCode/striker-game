@@ -1,0 +1,66 @@
+[
+  {
+    "key": "forest_fighter",
+    "file": "canopy-fighter-v1.png",
+    "width": 384,
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-093cadd2-c70c-4bb6-b408-f6cda764abfc.png",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: single transparent enemy fighter sprite for IRON STRIKER, original premium vertical arcade shoot-em-up. Subject: one forest-camouflage twin-boom interceptor, moss olive green weathered metal, brass engine accents, cream tail stripes, two dark cockpit canopies and angular forward swept wings, very clear sharp silhouette, polished painted 3D sprite quality with realistic metal shading matching detailed military arcade aircraft. STRICT orthographic overhead dorsal top-down view, nose points straight DOWN toward bottom of image, bilateral symmetry, aircraft centered on square canvas filling 86 percent of width and 88 percent height. Jet engines with small amber nozzle interiors at top; no exhaust plumes. Clean readable panels and rivets, no tiny text. Background is genuinely transparent alpha. No perspective tilt, no side view, no ground shadow, no surrounding scene, no bullets, no text, no watermark, no UI, no logo. Only one complete aircraft, all wingtips inside canvas with padding."
+  },
+  {
+    "key": "forest_boss",
+    "file": "canopy-boss-v1.png",
+    "width": 768,
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-f315708c-3511-4e13-b803-482ab1f1bdf4.png",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: single transparent stage boss sprite for original IRON STRIKER vertical arcade shooter. One huge original forest fortress aircraft called CANOPY WARDEN: broad flying wing with short armored central cockpit and two giant circular ducted engines toward upper rear, heavy bronze cannon pods integrated into the outer wings at left and right, olive green woodland camouflage and worn cream identification stripes. STRICT orthographic overhead dorsal top-down view, nose and BOTH cannon muzzles point DOWN toward bottom edge. Perfect bilateral symmetry, centered square canvas with 7 percent clear padding on every side, wide silhouette ratio width to height about 1.3. Polished premium detailed painted realistic metal arcade game sprite, sharp dark edges, restrained rivets, green and brass metal highlights, readable solid design at 330px width. No exhaust, no projectiles, no glow aura, no text, no logo, no watermark, no surrounding scene, no shadows on background. Actual transparent alpha backdrop. Only one complete aircraft."
+  },
+  {
+    "key": "forest_bg",
+    "file": "canopy-bg-v1.jpg",
+    "width": 768,
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-30348569-7ae6-4266-89d0-1214705b9963.png",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: vertical scrolling game background texture, portrait 1024x1536. Original high quality military arcade vertical shoot-em-up terrain: dense emerald tropical forest surrounding a narrow winding turquoise river through a deep canyon, scattered small abandoned concrete airbase aprons and crossing bridges at the LEFT and RIGHT edges, mossy rocky cliffs, understated sunlight, fine richly painted realistic aerial terrain. STRICT orthographic directly overhead map camera, no horizon and no perspective. Continuous terrain entire image, river flows from top to bottom. Central 55 percent kept relatively dark and visually calm for bright bullets and flying aircraft. Upper and lower edges both continue similar forest river terrain so scrolling transition is gentle. Muted sophisticated emerald teal palette, detailed canopy texture on edges. No aircraft, no ships, no enemies, no UI, no text, no arrows, no icons, no labels, no watermark. Portrait composition."
+  },
+  {
+    "key": "caldera_fighter",
+    "file": "caldera-fighter-v1.png",
+    "width": 384,
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-d276bdd3-ef3e-4ec7-8c4a-f01e8f5fc1dd.png",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: single transparent enemy fighter sprite for IRON STRIKER original military arcade vertical shooter. One original volcanic defense interceptor, narrow arrowhead shape with swept angular delta wings, black graphite and dark gunmetal armor, burnt copper edging, two crimson red engine intake panels, silver central cockpit, forward downward nose, geometric tail fins. STRICT orthographic overhead dorsal top-down view, nose points DOWN toward bottom of square canvas. Bilaterally symmetric, centered complete aircraft with 7 percent transparent padding around all wing tips. Premium painted realistic metal sprite matching detailed vintage military shoot-em-up art. Clear powerful silhouette at 64px. No fire/exhaust plumes, no aura, no ground shadows, no text or watermark or UI or scenery. Genuinely transparent alpha background. Only one aircraft."
+  },
+  {
+    "key": "caldera_boss",
+    "file": "caldera-boss-v1.png",
+    "width": 768,
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-7a1eb0b4-571c-4369-ba10-0eccf6e4a67a.png",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: single transparent final regional boss aircraft sprite for original IRON STRIKER arcade vertical shoot-em-up. One immense original aircraft called CALDERA HAMMER, broad angular armored flying wing, black basalt gunmetal alloy and copper panel outlines, THREE distinct weapon modules: huge left and right forward heavy cannon housings around x20 and80 percent and central molten orange energy reactor behind cockpit. Small crimson intake vents, angular armor, weathered but elegant design, thick compact silhouette, no tentacles. STRICT orthographic overhead dorsal top-down view, central armored nose and cannons point DOWN, bilaterally symmetric, centered canvas with even 7 percent clear margin, entire aircraft visible, width to height about1.25. Premium polished realistically painted 3D arcade sprite, metallic lighting and crisp edges, no flames outside the object, no projectiles, no ambient glow, no shadow on background, no scenery, no text, no watermark. Genuinely transparent alpha background."
+  },
+  {
+    "key": "caldera_bg",
+    "file": "caldera-bg-v1.jpg",
+    "width": 768,
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-bb781312-cb44-4e6d-a09d-b20c37f69434.png",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 vertical scrolling military arcade game background. STRICT directly overhead orthographic aerial terrain map, no horizon no perspective. Volcanic canyon military outpost: dark basalt ground, narrow winding lava streams near LEFT and RIGHT edges, metallic bridges and geometric hardened hangar platforms at edges, sparse ash and cooling cracks. Middle55 percent dark muted charcoal winding access corridor with very subtle worn concrete detail, clean and quiet enough to clearly see aircraft and bright bullets. High quality richly painted realistic aerial arcade terrain texture, copper red-orange lava, dark gray black basalt, restrained glowing lava that never floods screen. Top and bottom both similar basalt canyon continuing vertically for scrolling. No aircraft, no enemies, no ships, no characters, no UI, no text, no labels, no arrows, no icons, no watermark. Full bleed portrait."
+  },
+  {
+    "key": "forest_midboss",
+    "file": "canopy-midboss-v1.png",
+    "width": 512,
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-18f60b21-669c-48b3-bbeb-bcc197740b48.png",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: single transparent midboss aircraft sprite for original IRON STRIKER military arcade shoot-em-up. One original jungle assault leader gunship, compact wide four-engine armored heavy attack aircraft, moss olive woodland camouflage, brass propeller spinner caps at lower front of engines, cream broad tail stripe, two stubby forward cannon housings under wings. STRICT directly overhead orthographic dorsal TOP-DOWN view, nose and muzzles point DOWN at bottom of canvas. Centered complete aircraft with all wingtips within even 7 percent padding, width to height about1.2. Distinct from fighters: blunt central cockpit, boxy armored wings, four separate engines. Premium realistically painted metal arcade sprite, crisp detailed shading with readable military paneling. No propeller blades, only spinner caps, no exhaust, no projectiles, no ground shadow, no text, no scenery, no UI, no watermark. Actual transparent alpha background. Only one aircraft."
+  },
+  {
+    "key": "caldera_midboss",
+    "file": "caldera-midboss-v1.png",
+    "width": 512,
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-fe52be07-0563-443c-a8e4-bbd0e1e3c9a4.png",
+    "tool": "built-in image_gen",
+    "prompt": "Use case: stylized-concept. Asset type: one transparent original military arcade shooter midboss aircraft sprite. Volcanic assault command gunship: compact muscular armored twin engine aircraft, angular clipped delta wings, black gunmetal plating and bronze edges, ruby red engine vents, two oversized wing tip missile pods containing clearly visible loaded missiles pointed DOWN, short broad silver armored canopy. STRICT orthographic top-down overhead dorsal view, nose points DOWN toward bottom edge. Bilateral symmetry, centered full aircraft with even 7 percent transparent padding, width to height1.15. Distinct silhouette from light narrow fighters and wide flying wing bosses, detailed premium painted realistic 3D military arcade metal artwork, clean sharp edges, readable at180px width. No exhaust plumes or flames, no shots, no aura, no background shadows, no terrain, no text or watermark or UI. Actual transparent alpha. Only one aircraft."
+  }
+]

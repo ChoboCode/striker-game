@@ -1,0 +1,14 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="../"><title>랜서 에너지포</title><link rel="stylesheet" href="css/fonts.css"><style>body{margin:0;background:#0a111d;color:#eee;text-align:center;font:16px NeoDunggeunmo,monospace}canvas{display:block;margin:16px auto;width:min(480px,95vw);background:#102437}button,a{font:inherit;color:#ffe2a1;background:#253347;padding:12px;border:1px solid #978354;border-radius:5px}p{color:#afbdcc}</style></head><body><h1>랜서 · 초고출력 에너지포</h1><p>둥근 입자 응축 → 지속 방출 → 잔광</p><button id="fire" disabled>준비 중</button> <a href="index.html">게임 열기</a><canvas id="view" width="480" height="640"></canvas><p>화면에서 포인터를 움직이면 기체가 이동합니다.</p><script src="js/assets.js"></script><script src="js/lancer-burst.js"></script><script>
+const cv=document.getElementById('view'),ctx=cv.getContext('2d'),btn=document.getElementById('fire');
+const p={x:240,y:540};let run=null,last=0,time=0,ready=false;
+btn.onclick=()=>{if(ready&&!run)run=LancerBurst.create(480,640,p);};
+cv.onpointermove=e=>{const b=cv.getBoundingClientRect();p.x=Math.max(45,Math.min(435,(e.clientX-b.left)*480/b.width));};
+Assets.loadCore().then(()=>{ready=true;btn.disabled=false;btn.textContent='필살기 발사';});
+function frame(now){const dt=Math.min(.035,(now-last)/1000);last=now;time+=dt;ctx.clearRect(0,0,480,640);
+ctx.strokeStyle='#20394d';ctx.lineWidth=1;for(let y=(time*35)%48;y<640;y+=48){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(480,y);ctx.stroke();}
+if(ready){if(run&&LancerBurst.update(run,dt,p,()=>{},()=>{}))run=null;
+const art=Assets.body('lancer','neutral',62);ctx.drawImage(art.c,p.x-art.px,p.y-art.py);
+for(const hub of art.hubs){const f=Assets.propSet(art.r,'#d5d8ce')[Math.floor(time*30)%6];ctx.drawImage(f,p.x+hub.x-f.width/2,p.y+hub.y-f.height/2);}
+if(run)LancerBurst.draw(run,ctx);btn.disabled=!!run;btn.textContent=run?(run.t<.65?'에너지 응축 중':'에너지포 방출 중'):'필살기 발사';}
+requestAnimationFrame(frame);}requestAnimationFrame(frame);
+</script></body></html>

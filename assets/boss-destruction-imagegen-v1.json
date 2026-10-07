@@ -1,0 +1,33 @@
+[
+  {
+    "key": "boss-heavy-blast",
+    "file": "boss-heavy-blast-v1.webp",
+    "png": "boss-heavy-blast-v1.png",
+    "width": 1024,
+    "prompt": "Use case: stylized-concept. Asset type: production raster VFX animation SPRITE SHEET for a detailed original top-down military arcade shooter. Create ONE square transparent sprite sheet, EXACTLY 4 columns x 4 rows of equal square cells, SIXTEEN sequential frames, reading left to right then top to bottom. No drawn grid, labels, numbers, text, borders or checkerboard. True transparent alpha between the frames. Every cell shares same central origin, consistent top-down camera and centered scale reference. Subject: HEAVY NAVAL FORTRESS fuel and ammunition explosion, richly hand-painted realistic prerendered VFX. Frames 1-3: white-yellow ignition at center and short jagged golden sparks. Frames 4-7: a big distinct irregular billowing orange-white fuel fireball expands with curling lobes and streaking amber debris. Frames 8-11: bright inner fire surrounded by large dense charcoal smoke curls and scattered embers. Frames 12-16: separate drifting brown-gray smoke wisps and dim embers dissipate to near transparency. Impressive cinematic energy readable at a 320-400px rendered size but not a solid opaque disk. Keep the explosion fully within EACH cell with about 10% clear margins; effects NEVER cross between neighboring cells. No ship or terrain in any frame, no background, no star shape, no flat vector geometry. The final row must visibly shrink, disperse and fade, not remain a full smoke ball.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-7e2bb721-d46d-4f5f-82ac-6938ea27c15b.png",
+    "tool": "built-in image_gen",
+    "date": "2026-10-06"
+  },
+  {
+    "key": "boss-reactor-blast",
+    "file": "boss-reactor-blast-v1.webp",
+    "png": "boss-reactor-blast-v1.png",
+    "width": 1024,
+    "prompt": "Use case: stylized-concept. Asset type: production raster VFX animation SPRITE SHEET for an original polished top-down arcade aircraft shooter. ONE square transparent sheet, EXACTLY 4 columns x 4 rows of equal square cells, SIXTEEN sequential animation frames in reading order. Each frame centered in its cell at same fixed origin. No drawn grid, labels, numbers, text, borders or checkerboard; genuine transparent alpha. Subject: catastrophic REACTOR CORE explosion of the final steel aerial fortress. Match detailed hand-painted realistic metal game art. Frames 1-3: small brilliant blue-white central ignition with thin electric cyan filaments. Frames 4-7: powerful white-hot teal inner plasma and irregular amber-orange outer fire lobes surge outward, a readable circular energy wave around the fire, long small golden metallic sparks. Frames 8-11: cyan plasma cools into broken orange fire clusters and blue-gray charcoal smoke curling around a darker central cavity. Frames 12-16: smoke splits into scattered fading wisps and sparse tiny cyan-orange embers, ending almost transparent. A dramatic recognizable sequence DISTINCT from ordinary orange explosions. Energy wave is organically painted luminous VFX, not simple flat vector rings. All individual frames fit entirely within their own cell with 10% transparent margins and NEVER touch another cell. No ship, no terrain, no characters, no UI. Pure VFX on transparent background.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-dfbb3ea0-24c5-4eb3-ba8f-f61e7aee8d0b.png",
+    "tool": "built-in image_gen",
+    "date": "2026-10-06"
+  },
+  {
+    "key": "regent-damaged",
+    "file": "regent-damaged-v1.webp",
+    "png": "regent-damaged-v1.png",
+    "width": 640,
+    "reference": "C:/artificial-intelligence/striker-game/assets/s5-boss.png",
+    "prompt": "Use case: precise-object-edit. Asset type: damaged-state production game sprite. Edit target: supplied original top-down IRON REGENT aerial fortress sprite. Keep EXACT same original design, overhead orthographic camera, facing direction, centered registration, silhouette, canvas proportions, body framing, colors, lighting, and transparent background. Change ONLY its TWO wide lateral weapon arms and its central reactor equipment. Left arm target normalized x .04-.31, y .38-.72; right arm mirrored x .69-.96, y .38-.72. Replace those weapon mechanisms with completely smashed nonfunctional short barrel stumps, deeply blackened steel craters, tangled broken braces and collapsed armor, tiny dim embers. Central reactor target x .36-.64, y .30-.69: visibly ruptured reactor housing, cracked dark circular cavity and shattered bent radial metal panels with subtle hot amber and cool blue traces, no intact orange glowing round orb. Preserve ALL remaining hull areas and fore/aft engines, exactly align corresponding pixels to reference. No large smoke or flames or projectile effects, runtime adds animated explosions. NO new weapons or redesign or background or labels. Single complete fortress on genuine transparency. The result will be composited only into its three destroyed regions, so retain exact spatial alignment.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-9c5fafd9-9406-4407-8957-24e633a1ead8.png",
+    "tool": "built-in image_gen",
+    "date": "2026-10-06"
+  }
+]

@@ -1,0 +1,16 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="../"><title>필살기 · 전면 폭격</title><link rel="stylesheet" href="css/fonts.css"><style>
+body{margin:0;background:#080d17;color:#dfebf8;font:16px/1.6 'NeoDunggeunmo',monospace}main{max-width:900px;margin:22px auto;padding:0 18px}h1{font-size:26px}p{color:#97b2cf}.layout{display:grid;grid-template-columns:minmax(240px,480px) 1fr;gap:28px;align-items:start}canvas{width:100%;border:1px solid #314866;border-radius:9px}button{font:inherit;color:#fff;background:#235f99;border:1px solid #78b6ef;border-radius:6px;padding:12px 20px;width:100%;cursor:pointer;margin:6px 0}button:disabled{opacity:.4}input{width:100%}a{color:#f3c978}@media(max-width:650px){.layout{grid-template-columns:1fr}canvas{max-height:65vh;width:auto;max-width:100%;margin:auto}aside{width:100%}}
+</style></head><body><main><h1>AIR SUPPORT · 전면 폭격</h1><div class="layout"><canvas id="preview" width="480" height="720" aria-label="필살기 미리보기"></canvas><aside><p>FLYBY 0.72s / MISSILE RAIN / IMPACT</p><button id="play" disabled>필살기 재생</button><button id="pause" disabled>일시정지</button><label for="time">연출 위치</label><input id="time" type="range" min="0" max="2.2" step="0.01" value="0" disabled><p id="status" role="status">이미지 준비 중…</p><p>게임에서는 X 또는 폭탄 버튼으로 발동합니다.</p><a href="index.html">게임 열기</a></aside></div></main><script src="js/assets.js"></script><script src="js/bomb-run.js"></script><script>
+'use strict';let run=null,paused=false,last=0;const canvas=document.getElementById('preview'),ctx=canvas.getContext('2d'),slider=document.getElementById('time');
+Promise.all([Assets.loadCore(),Assets.loadBg(4)]).then(()=>{
+ document.querySelectorAll('button,input').forEach(el=>el.disabled=false);document.getElementById('status').textContent='재생하거나 시간을 움직여 확인하세요';
+ document.getElementById('play').onclick=()=>{run=BombRun.create(480,720);paused=false;document.getElementById('pause').textContent='일시정지';};
+ document.getElementById('pause').onclick=function(){paused=!paused;this.textContent=paused?'계속 재생':'일시정지';};
+ slider.oninput=()=>{run=BombRun.create(480,720);BombRun.update(run,Number(slider.value),()=>{});paused=true;document.getElementById('pause').textContent='계속 재생';};
+ function draw(now){const dt=Math.min(.05,(now-last)/1000);last=now;const bg=Assets.image('bg4');ctx.drawImage(bg,0,0,480,720);
+   const player=Assets.body('player','neutral',62);ctx.drawImage(player.c,240-player.px,625-player.py);
+   if(run){if(!paused)BombRun.update(run,dt,()=>{});BombRun.draw(run,ctx);slider.value=Math.min(BombRun.DURATION,run.t);document.getElementById('status').textContent=Math.min(BombRun.DURATION,run.t).toFixed(2)+'초 · 착탄 '+run.missiles.filter(m=>m.hit).length+'/25';if(run.t>=BombRun.DURATION)paused=true;}
+   requestAnimationFrame(draw);
+ }requestAnimationFrame(draw);
+}).catch(e=>document.getElementById('status').textContent=e.message);
+</script></body></html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <base href="../">
+  <title>보스 격파 연출 미리보기</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,sans-serif;background:#071019;color:#e8f1fa}
+    *{box-sizing:border-box}body{margin:0}.wrap{max-width:1120px;margin:auto;padding:22px 16px 38px}
+    h1{margin:0;font-size:clamp(22px,4vw,32px)}.lead{margin:.45rem 0 1.2rem;color:#9eb1c5}
+    .grid{display:grid;grid-template-columns:minmax(0,720px) 1fr;gap:18px;align-items:start}.frame{position:relative;border:1px solid #38546c;border-radius:14px;overflow:hidden;background:#07131e}
+    canvas{display:block;width:100%;height:auto;aspect-ratio:2/3;image-rendering:auto}.stamp{position:absolute;left:14px;top:12px;padding:5px 8px;border:1px solid #e8b86c;border-radius:99px;background:#172437cc;color:#ffe0a2;font-size:12px}
+    .panel{padding:16px;border:1px solid #2c455d;border-radius:14px;background:linear-gradient(145deg,#142130,#0c1724)}label{display:block;margin:0 0 7px;color:#b8cde0;font-size:13px}select,button,input{font:inherit}select,button{width:100%;min-height:42px;border-radius:8px;border:1px solid #4c6982;background:#172a3d;color:#edf6ff;padding:9px;cursor:pointer}button:hover{background:#213a53}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 16px}.range{width:100%;accent-color:#ef9b42}
+    .readout{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.readout div{padding:9px;border-radius:8px;background:#09131f}.readout span{display:block;color:#8fa7bc;font-size:12px}.readout b{font-size:15px;color:#ffe0ad}.note{margin:16px 0 0;color:#a6b8ca;font-size:13px;line-height:1.65}.loading{color:#ffda99}.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;color:#aabed1;font-size:12px}.legend i{width:9px;height:9px;border-radius:50%;display:inline-block;background:#ffb563}.legend i:last-child{background:#f55f3d}
+    @media(max-width:760px){.wrap{padding:16px 12px 28px}.grid{grid-template-columns:1fr}.panel{padding:14px}.buttons{margin-bottom:14px}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <h1>보스 격파 연출</h1>
+  <p class="lead">화염과 검은 연기로 격파 장면을 재생합니다. 5탄은 원래 포대와 포신을 교체한 전용 손상 원화, 6탄은 탄약 화재, 7탄은 중심 동력로 점화를 사용합니다. <a href="index.html">게임으로 돌아가기</a></p>
+  <div class="grid">
+    <section class="frame" aria-label="보스 격파 장면">
+      <canvas id="preview" width="480" height="720"></canvas>
+      <span class="stamp" id="stamp">STAGE 5 · BOSS BREAK</span>
+    </section>
+    <aside class="panel">
+      <label for="stageSelect">스테이지</label>
+      <select id="stageSelect" aria-label="스테이지 선택"></select>
+      <div class="buttons"><button type="button" id="togglePlay">일시정지</button><button type="button" id="replay">처음부터</button></div>
+      <label for="timeline">격파 타임라인 <span id="timeText">0.00 / 2.40초</span></label>
+      <input class="range" id="timeline" type="range" min="0" max="240" value="0" step="1" aria-label="격파 타임라인">
+      <div class="readout" aria-live="polite"><div><span>순차 파손</span><b id="partsText">0 / 0</b></div><div><span>최종 폭발</span><b id="finalText">대기</b></div><div><span>활성 폭발</span><b id="burstText">0</b></div><div><span>남은 시간</span><b id="remainingText">2.40초</b></div></div>
+      <div class="legend"><span><i></i> 분리 폭발</span><span><i></i> 1.50초 최종 폭발</span></div>
+      <p class="note" id="status">원화와 배경을 불러오는 중입니다.</p>
+    </aside>
+  </div>
+</main>
+<script src="js/assets.js"></script>
+<script src="js/stages.js"></script>
+<script src="js/difficulty.js"></script>
+<script src="js/boss-art.js"></script>
+<script src="js/bosses.js"></script>
+<script src="js/boss-destruction.js"></script>
+<script>
+(() => {
+  'use strict';
+  const canvas=document.querySelector('#preview'),ctx=canvas.getContext('2d'),select=document.querySelector('#stageSelect');
+  const slider=document.querySelector('#timeline'),play=document.querySelector('#togglePlay'),replay=document.querySelector('#replay');
+  const read={time:document.querySelector('#timeText'),parts:document.querySelector('#partsText'),final:document.querySelector('#finalText'),bursts:document.querySelector('#burstText'),remaining:document.querySelector('#remainingText'),status:document.querySelector('#status'),stamp:document.querySelector('#stamp')};
+  let index=4,time=0,paused=false,last=0,boss=null,effect=null,ready=false;
+  Stages.STAGES.forEach((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`STAGE ${s.no} · ${Bosses.DEFS[s.boss].name}`;select.appendChild(o);});
+  select.value=String(index);
+  const api={W:480,H:720,px:240,py:620,bulletMul:1,attackRate:0,patternCount:n=>n,eShot:()=>null,eFan:()=>{},eRing:()=>{},eMissile:()=>{},aimAngle:()=>Math.PI/2};
+  function makeBoss(){
+    const stage=Stages.STAGES[index];boss=Bosses.create(stage.boss,index,Difficulty.get('hard'));boss.x=240;boss.y=Math.max(152,boss.entryY||160);boss.state='dying';boss.dying=time;boss.t=time;boss.deathFx=BossDestruction.create(boss);effect=boss.deathFx;sync();
+  }
+  function sync(){
+    if(!boss)return;boss.dying=time;boss.t=time;
+    boss.parts.forEach((p,i)=>{p.alive=time<.015+.18*i;p.hp=p.alive?p.maxHp:0;});
+    BossDestruction.update(effect,time);slider.value=Math.round(time*100);
+  }
+  async function choose(next){
+    index=Number(next);ready=false;read.status.className='note loading';read.status.textContent='스테이지 원화와 격파 시트를 불러오는 중입니다.';
+    const stage=Stages.STAGES[index];await Promise.all([Assets.loadBg(stage.bg),Assets.loadBossFx(stage.bg)]);time=0;makeBoss();ready=true;
+    read.status.className='note';read.status.textContent=`${stage.no}탄 ${Bosses.DEFS[stage.boss].name} — ${stage.bg===5?'전용 반응로 폭발 시트':'대형 폭발 시트'} 적용`;
+  }
+  function background(){
+    const stage=Stages.STAGES[index],tile=Assets.bgTile(stage.bg,480,720);ctx.clearRect(0,0,480,720);ctx.fillStyle='#07121d';ctx.fillRect(0,0,480,720);if(tile)ctx.drawImage(tile,0,0);ctx.fillStyle=stage.tint||'rgba(5,12,25,.2)';ctx.fillRect(0,0,480,720);const fade=ctx.createLinearGradient(0,0,0,720);fade.addColorStop(0,'rgba(2,8,14,.1)');fade.addColorStop(1,'rgba(2,6,12,.56)');ctx.fillStyle=fade;ctx.fillRect(0,0,480,720);}
+  function draw(){
+    background();if(!boss)return;Bosses.draw(boss,ctx,api);BossDestruction.draw(effect,ctx);ctx.fillStyle='rgba(5,12,21,.7)';ctx.fillRect(0,684,480,36);ctx.font='13px system-ui';ctx.fillStyle='#d9e9f8';ctx.textAlign='center';ctx.fillText(time<1.5?'부분이 순차적으로 붕괴합니다':'주 반응로 최종 폭발',240,706);
+    const stats=BossDestruction.stats(effect),dead=boss.parts.filter(p=>!p.alive).length;read.time.textContent=`${time.toFixed(2)} / ${BossDestruction.DURATION.toFixed(2)}초`;read.parts.textContent=`${dead} / ${boss.parts.length}`;read.final.textContent=stats.finalActive?'점화':'대기';read.bursts.textContent=String(stats.bursts);read.remaining.textContent=`${(BossDestruction.DURATION-time).toFixed(2)}초`;read.stamp.textContent=`STAGE ${index+1} · ${boss.id==='regent'?'REACTOR BREAK':'BOSS BREAK'}`;
+  }
+  function tick(now){if(!last)last=now;const dt=Math.min(.05,(now-last)/1000);last=now;if(ready&&!paused){time+=dt;if(time>BossDestruction.DURATION)time=0;sync();}draw();requestAnimationFrame(tick);}
+  select.addEventListener('change',()=>choose(select.value).catch(e=>{read.status.textContent=e.message;}));
+  slider.addEventListener('input',()=>{paused=true;play.textContent='재생';time=Number(slider.value)/100;sync();draw();});
+  play.addEventListener('click',()=>{paused=!paused;play.textContent=paused?'재생':'일시정지';});
+  replay.addEventListener('click',()=>{time=0;paused=false;play.textContent='일시정지';sync();});
+  window.BossDestructionPreview={stats:()=>({ready,index:index+1,time,paused,boss:boss&&boss.id,effect:effect&&BossDestruction.stats(effect)}),choose:stage=>choose(Number(stage)-1),setTime:t=>{time=Math.max(0,Math.min(BossDestruction.DURATION,t));paused=true;sync();draw();}};
+  Promise.all([Assets.loadCore(),choose(index)]).then(()=>requestAnimationFrame(tick)).catch(e=>{read.status.textContent=e.message;});
+})();
+</script>
+</body>
+</html>

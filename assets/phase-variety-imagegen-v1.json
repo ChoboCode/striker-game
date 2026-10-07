@@ -1,0 +1,16 @@
+[
+  {
+    "key": "canopy_gunship",
+    "file": "canopy-gunship-v1.png",
+    "prompt": "Use case: stylized-concept. Asset type: one transparent enemy gunship sprite for original IRON STRIKER vertical arcade shooter. Subject: a woodland heavy assault gunship, very broad swept trapezoidal wings, two large circular ducted rotor nacelles, short thick armored central fuselage with two front cannon mounts. Clearly different silhouette from a slim twin-boom interceptor. Moss olive green military camouflage, brass mechanical detailing, cream edge stripes, premium painted realistic 3D metal sprite with bold sharp readable panel shading. STRICT orthographic overhead dorsal view; nose and cannon muzzles face straight DOWN toward bottom of image. Perfect bilateral symmetry. Single centered complete aircraft on square canvas filling 85 percent width; all extremities inside canvas with 7 percent clear margins. Actual transparent alpha backdrop. No lettering, text, logo, watermark, bullets, exhaust trails, floor shadows, scene, other aircraft, perspective or UI. Static rotor blades inside ducts only; do not draw transparent halos.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-9e27337c-092e-4583-8fa2-28b6841ab762.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "caldera_bomber",
+    "file": "caldera-bomber-v1.png",
+    "prompt": "Use case: stylized-concept. Asset type: one transparent enemy bomber sprite for original IRON STRIKER vertical arcade shooter. Subject: a volcanic heavy bomber, wide four-engine delta wing with four compact exposed engine housings, rounded armored nose, two external dark bomb pods under broad rearward swept wings, short double tail fins. A solid broad bomber silhouette distinct from a twin-boom fighter. Charcoal gunmetal and dark copper-red armor, restrained hot orange engine recesses, cream markings without text. Premium painted realistic 3D metal arcade sprite with bold readable highlights and dark crisp edges. STRICT orthographic overhead dorsal view; nose points straight DOWN toward bottom of image; perfect bilateral symmetry. One complete centered aircraft, square canvas, 85 percent width, all extremities fully visible with 7 percent clear padding. Actual transparent alpha backdrop. No lettering, logo, text, watermark, bullets, exhaust plume, floor shadow, scenery, extra aircraft, perspective or UI.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-5415935e-b48e-4a4a-95a5-6cf2533729e8.png",
+    "tool": "built-in image_gen"
+  }
+]

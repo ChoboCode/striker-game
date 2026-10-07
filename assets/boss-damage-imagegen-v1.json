@@ -1,0 +1,80 @@
+[
+  {
+    "key": "breakwater-damaged",
+    "file": "boss1-breakwater-damaged-v1.webp",
+    "width": 512,
+    "regions": {
+      "turretR": [
+        0.435,
+        0.3,
+        0.13,
+        0.17
+      ],
+      "turretF": [
+        0.435,
+        0.49,
+        0.13,
+        0.16
+      ]
+    },
+    "reference": "assets/boss1-breakwater.png",
+    "prompt": "Use case: precise-object-edit. Asset type: pixel-registered complete damaged-state overhead raster boss sprite.\nEdit target is the supplied original game sprite, not a redesign. Preserve the EXACT original overhead orthographic camera, framing, scale, center registration, canvas aspect ratio, transparency, original main silhouette, color palette, panel lines and lighting. Edit ONLY named original weapon modules in place. Physically remove their original intact barrels all the way to the original mounting socket. Leave short jagged barrel roots, bent matching armor and dark original cavities integrated into that exact module, not another ship's wreck pasted on top. ALL other pixels should align to input. No flying pieces, metal fragments, extra rubble piles, separate objects, flames, smoke, projectiles, giant craters, neon aura, text or watermark. True transparent background. Single complete original craft with all listed modules destroyed.\nBREAKWATER target: graphite-gray four-engine bomber with yellow wing stripes. Destroy ONLY its two original circular dorsal gun turrets on the central fuselage: rear/upper turret normalized x .435-.565,y .30-.47; front/lower turret x .435-.565,y .49-.65. Keep turret socket footprint; their paired long straight barrels must disappear and become short broken gun roots, crushed dark circular metal mechanisms and subtle soot, no functioning long gun remains. Keep four engine nacelles and spinner hubs EXACTLY intact, as well as wings, tailplane, fuselage and lower cockpit glazing. Preserve all four yellow engine bands and yellow wing stripes. Same original 1:1 canvas. Upper and lower turrets must stay in original positions, do not move or add turrets.",
+    "tool": "built-in image_gen",
+    "date": "2026-10-07",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-aba14f9f-bb9e-4069-aeab-3402cbc55f13.png"
+  },
+  {
+    "key": "gemini-damaged",
+    "file": "s3-boss-damaged-v1.webp",
+    "width": 560,
+    "regions": {
+      "podL": [
+        0.01,
+        0.335,
+        0.235,
+        0.43
+      ],
+      "podR": [
+        0.755,
+        0.335,
+        0.235,
+        0.43
+      ]
+    },
+    "reference": "assets/s3-boss.png",
+    "prompt": "Use case: precise-object-edit. Asset type: pixel-registered complete damaged-state overhead raster boss sprite.\nEdit target is the supplied original game sprite, not a redesign. Preserve the EXACT original overhead orthographic camera, framing, scale, center registration, canvas aspect ratio, transparency, original main silhouette, color palette, panel lines and lighting. Edit ONLY named original weapon modules in place. Physically remove their original intact barrels all the way to the original mounting socket. Leave short jagged barrel roots, bent matching armor and dark original cavities integrated into that exact module, not another ship's wreck pasted on top. ALL other pixels should align to input. No flying pieces, metal fragments, extra rubble piles, separate objects, flames, smoke, projectiles, giant craters, neon aura, text or watermark. True transparent background. Single complete original craft with all listed modules destroyed.\nFROST GEMINI target: broad white-gray snow camouflage fortress with blue engines. Destroy ONLY its existing TWO lateral weapon batteries, left normalized x .01-.245,y .335-.765 and mirrored right x .755-.99,y .335-.765. Each battery has stacked gun mechanisms and protruding diagonal/downward barrels: remove EVERY functioning straight barrel and muzzle in both side batteries down to original mounting sockets, including the long lowest pair. Replace with short collapsed broken mechanisms and matching white-gray scorched metal, a few bent brackets still attached inside the original wing bays. Keep white snow-camouflage wing surfaces, all tall fin structures and blue-glowing engine caps EXACTLY intact outside target regions. Keep the entire narrow central cannon/spine and its blue lights intact. Do not damage or remove the central cannon or the rear engine jets. Keep exact original 1:1 canvas and original wing boundaries wherever they are not barrel protrusions.",
+    "tool": "built-in image_gen",
+    "date": "2026-10-07",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-9cf3924b-feba-4a51-8114-8d64f8f70642.png"
+  },
+  {
+    "key": "canopy-damaged",
+    "file": "canopy-boss-damaged-v1.webp",
+    "width": 768,
+    "regions": {
+      "wingL": [
+        0.045,
+        0.435,
+        0.17,
+        0.385
+      ],
+      "wingR": [
+        0.785,
+        0.435,
+        0.17,
+        0.385
+      ],
+      "core": [
+        0.425,
+        0.285,
+        0.15,
+        0.205
+      ]
+    },
+    "reference": "assets/canopy-boss-v1.png",
+    "prompt": "Use case: precise-object-edit. Asset type: pixel-registered complete damaged-state overhead raster boss sprite.\nEdit target is the supplied original game sprite, not a redesign. Preserve the EXACT original overhead orthographic camera, framing, scale, center registration, canvas aspect ratio, transparency, original main silhouette, color palette, panel lines and lighting. Edit ONLY named original weapon modules in place. Physically remove their original intact barrels all the way to the original mounting socket. Leave short jagged barrel roots, bent matching armor and dark original cavities integrated into that exact module, not another ship's wreck pasted on top. ALL other pixels should align to input. No flying pieces, metal fragments, extra rubble piles, separate objects, flames, smoke, projectiles, giant craters, neon aura, text or watermark. True transparent background. Single complete original craft with all listed modules destroyed.\nCANOPY WARDEN target: moss-olive broad flying wing with cream diagonal stripes and twin circular duct fans. Destroy ONLY the left and right integrated bronze twin cannon pods near the outer wing: normalized x .045-.215,y .435-.82 and mirrored x .785-.955,y .435-.82, including ALL four downward pointing long barrels, and the small central armored power-core housing just above the cockpit normalized x .425-.575,y .285-.49. Cannons must have no complete long barrels, only short torn mounting roots with transparency below where long barrels used to extend. Pod casing remains olive/bronze original materials, scorched cracked at gun sockets. Core becomes a small dark broken gap in ORIGINAL central spine, retaining original panel geometry around it, not a newly added glowing orb or borrowed engine. Preserve the lower cockpit glazing below target, all wings, cream stripes, yellow-green metal tone, upper central tail, and especially BOTH intact circular ducted fans at top. No damage to fans or wing tips. Preserve exact original canvas aspect ratio 768:576 and original centered framing.",
+    "tool": "built-in image_gen",
+    "date": "2026-10-07",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-ffcf6105-5f7e-4620-b004-c2389166af76.png"
+  }
+]

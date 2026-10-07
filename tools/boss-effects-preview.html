@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="../"><title>6탄 나이트 아크 · 부위 파괴 미리보기</title>
+<style>body{margin:0;background:#0b111a;color:#e0e8f0;font:15px/1.7 system-ui}main{max-width:1000px;margin:25px auto;padding:0 18px}h1{font-size:25px}p{color:#a9bacb}a{color:#e9bd7e}.layout{display:grid;grid-template-columns:minmax(280px,580px) 1fr;gap:25px}canvas{width:100%;background:radial-gradient(ellipse,#203343,#111c28);border:1px solid #364554;border-radius:12px}button{display:block;width:100%;margin:12px 0;background:#2a3846;color:#fff;border:1px solid #5e7286;border-radius:8px;padding:13px;cursor:pointer}button:disabled{opacity:.45;cursor:default}.amber{color:#ffca80}#fx{max-width:250px}@media(max-width:680px){.layout{grid-template-columns:1fr}}</style></head>
+<body><main><h1>6탄 나이트 아크 · 부위 파괴</h1><p>부위를 선택하면 해당 위치에서 폭발하고, 파괴된 원화로 바뀝니다. 게임에서는 해당 부위의 내구도가 0일 때 적용됩니다.</p><div class="layout"><canvas id="ship" width="580" height="660"></canvas><aside><p id="status" role="status">원화를 불러오는 중…</p><button data-part="bayL" disabled>좌현 무장부 파괴</button><button data-part="bayR" disabled>우현 무장부 파괴</button><button data-part="bridge" disabled>함교 파괴</button><button id="reset" disabled>처음 상태로</button><p class="amber">폭발 원화 · 16프레임</p><canvas id="fx" width="250" height="250"></canvas><p>무장부가 파괴되면 조준을 잃은 넓은 탄막이 잔해에서 나옵니다. 함교를 잃어도 남은 무장과 폭주 탄막으로 싸웁니다.</p><a href="tools/boss-destruction.html">전체 보스 격파 연출</a> · <a href="tools/stage4-art.html">야간 원화</a> · <a href="index.html">게임 열기</a></aside></div></main>
+<script src="js/assets.js"></script><script>
+'use strict';
+const parts={bayL:{x:-.25,y:-.09},bayR:{x:.25,y:-.09},bridge:{x:0,y:-.31}};
+const destroyed=new Set(), bursts=[];
+let time=0,last=0;
+Promise.all([Assets.loadCore(),Assets.loadStageArt(4)]).then(()=>{
+ document.getElementById('status').textContent='원화 준비 완료 · 파괴할 부위를 선택하세요';
+ document.querySelectorAll('button').forEach(b=>b.disabled=false);
+ document.querySelectorAll('[data-part]').forEach(button=>button.onclick=()=>{
+   const key=button.dataset.part;destroyed.add(key);bursts.push({key,start:time});button.disabled=true;
+   document.getElementById('status').textContent=button.textContent+' 완료';
+ });
+ document.getElementById('reset').onclick=()=>{destroyed.clear();bursts.length=0;document.querySelectorAll('button').forEach(b=>b.disabled=false);document.getElementById('status').textContent='모든 부위 복구';};
+ const canvas=document.getElementById('ship'),ctx=canvas.getContext('2d'),fx=document.getElementById('fx').getContext('2d');
+ function draw(now){time+=Math.min((now-last)/1000,.05);last=now;ctx.clearRect(0,0,580,660);const art=Assets.boss4Body(520,Array.from(destroyed));ctx.drawImage(art.c,290-art.px,330-art.py);
+   for(let i=bursts.length-1;i>=0;i--){const burst=bursts[i],age=time-burst.start,p=parts[burst.key];if(age>=.95)bursts.splice(i,1);else Assets.drawExplosion(ctx,290+p.x*520,330+p.y*520,230,age/.95);}
+   fx.clearRect(0,0,250,250);Assets.drawExplosion(fx,125,125,240,(time%1.45)/1.1);requestAnimationFrame(draw);
+ }requestAnimationFrame(draw);
+}).catch(e=>document.getElementById('status').textContent=e.message);
+</script></body></html>

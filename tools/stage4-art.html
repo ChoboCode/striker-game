@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<base href="../"><title>4탄 · 야간 항만 원화</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b111a;color:#e3e9ef;font:15px/1.6 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:32px 20px}header{display:flex;justify-content:space-between;gap:20px;align-items:center}h1{font-size:28px;margin:0}h2{font-size:19px;margin:0 0 14px}p{color:#a9bbca;margin:8px 0 20px}a{color:#e8b968}button{border:1px solid #7e6848;background:#30291e;color:#ffe1ae;border-radius:8px;padding:10px 16px;cursor:pointer}.group{padding:20px;background:#141e2a;border:1px solid #293847;border-radius:12px;margin:18px 0}.poses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}figure{margin:0;text-align:center;background:repeating-conic-gradient(#1c2a39 0% 25%,#192533 0% 50%) 0/24px 24px;border-radius:8px;overflow:hidden}canvas{display:block;width:100%;height:auto}figcaption{background:#111c28;padding:9px;font-size:13px;color:#c5d1dc}code{display:block;font-size:11px;overflow-wrap:anywhere;color:#8298ac}.boss{display:grid;grid-template-columns:minmax(250px,420px) 1fr;gap:25px;align-items:center}.boss p{margin:12px 0}.status{color:#edc484}@media(max-width:600px){main{padding:18px 10px}.group{padding:12px}.poses{gap:5px}.boss{grid-template-columns:1fr}h1{font-size:23px}code{font-size:9px}}
+</style></head>
+<body><main><header><div><h1>STAGE 04 · 야간 항만</h1><p>경비정 · 미사일정 · 쌍로터 공격기 · 중포탑 · 해상 요새</p></div><button id="motion" type="button" aria-pressed="false">로터 회전 멈춤</button></header>
+<p><a href="index.html">게임 열기</a> · <a href="tools/boss-effects-preview.html">부위 파괴·폭발 미리보기</a> · <a href="assets/stage4-rename-map.json">원래 파일명 대조표</a></p>
+<p id="status" class="status" role="status">원화 13장을 불러오는 중…</p><div id="gallery"></div>
+<section class="group boss"><figure><canvas id="boss" width="480" height="480"></canvas><figcaption>나이트 아크 · 해상 기동 요새<code>stage4-boss-nightark.png</code></figcaption></figure><div><h2>야간 항만의 최종 방어선</h2><p>장갑 선체, 함교, 양현 무장부가 있는 해상 요새입니다. 게임에서는 폭 320px로 등장합니다.</p><p>아래쪽이 적의 진행 방향입니다. 경비정·미사일정은 원본을 180° 돌려 표시합니다. 쌍로터는 날개 안쪽의 팬이 회전하며, 중포탑은 플레이어 위치에 따라 조준 자세를 바꿉니다.</p></div></section>
+</main><script src="js/assets.js"></script><script>
+'use strict';
+const groups = [
+  ['stage4Vtol','쌍로터 공격기','stage4-vtol',['l','n','r']],
+  ['stage4Patrol','경비정','stage4-patrol-boat',['ne','n','nw']],
+  ['stage4MissileBoat','미사일정','stage4-missile-boat',['ne','n','nw']],
+  ['stage4Artillery','중포탑','stage4-artillery',['l','n','r']]
+];
+const cards = [], poses = ['left','neutral','right'], labels = ['좌측','정면','우측'];
+for(const [kind,title,file,suffixes] of groups){
+  const section=document.createElement('section'); section.className='group';
+  const heading=document.createElement('h2'); heading.textContent=title; section.append(heading);
+  const row=document.createElement('div'); row.className='poses'; section.append(row);
+  poses.forEach((pose,i)=>{
+    const figure=document.createElement('figure'), canvas=document.createElement('canvas'); canvas.width=320; canvas.height=320;
+    const caption=document.createElement('figcaption'); caption.textContent=labels[i];
+    const code=document.createElement('code'); code.textContent=file+'-'+suffixes[i]+'.png';caption.append(code);
+    figure.append(canvas,caption); row.append(figure); cards.push({canvas,kind,pose,width:278});
+  });document.getElementById('gallery').append(section);
+}
+cards.push({canvas:document.getElementById('boss'),kind:'boss4',pose:'neutral',width:450});
+let paused=false, time=0, previous=0;
+document.getElementById('motion').onclick=function(){paused=!paused;this.textContent=paused?'로터 회전 재생':'로터 회전 멈춤';this.setAttribute('aria-pressed',String(paused));};
+Assets.loadStageArt(4).then(()=>{
+  document.getElementById('status').textContent='13장 준비 완료 · 게임과 같은 방향과 렌더링으로 표시';
+  function render(now){
+    if(!paused) time+=Math.min((now-previous)/1000,.05);previous=now;
+    for(const card of cards){const ctx=card.canvas.getContext('2d'), art=Assets.body(card.kind,card.pose,card.width);ctx.clearRect(0,0,card.canvas.width,card.canvas.height);ctx.save();ctx.translate(card.canvas.width/2,card.canvas.height/2);ctx.drawImage(art.c,-art.px,-art.py);Assets.drawDucts(ctx,art,time);ctx.restore();}
+    requestAnimationFrame(render);
+  }requestAnimationFrame(render);
+}).catch(error=>{document.getElementById('status').textContent=error.message;});
+</script></body></html>

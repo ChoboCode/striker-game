@@ -1,0 +1,8 @@
+# 랜서 전용 기체 원화
+
+ImageGen 내장 도구로 생성. `lancer-flight-sheet-v1.png`: 2172×724 RGBA. 좌/정면/우 3자세. 쌍발 엔진, 상아색·남색 도장, 금색 무장. 프로펠러는 게임에서 별도 회전합니다.
+
+```text
+Production sprite sheet for an ORIGINAL player aircraft named Lancer in a polished vertical arcade military shooter. TRUE transparent RGBA background. Wide 3:1 image containing exactly THREE equal square cells horizontally, no grid, no text, no labels. SAME twin-engine propeller fighter in three bank poses: LEFT CELL banking left strongly with left wing visibly foreshortened and right wing raised; CENTER CELL perfectly symmetrical level top-down pose; RIGHT CELL banking right strongly with right wing foreshortened, left wing raised. All noses point STRAIGHT UP, never sideways, all pivots exactly at cell centers, fixed camera and scale. Distinct wide swept gull wings, narrow spear-shaped elongated central nose, twin engine nacelles at about 30 and 70 percent width with visible propeller HUBS but NO propeller blades (game animates them), forked tail fins. Ivory light metal upper armor, rich dark navy panels, strong gold and copper wing stripes and cannon housings, small teal cockpit. Clearly NOT a recolor of a conventional single-engine plane: recognizable twin-engine angular silhouette, broad wings for spread-fire role. Authentic richly painted 2D late-90s arcade sprite feel, crisp metal panel highlights, readable at 64 pixels wide. Aircraft occupies about 80% of each cell with ample transparent space around wings. No background, no cast ground shadow, no smoke, no bullets, no logos, no markings, no insignias. All three planes fully visible, consistent asymmetric bank geometry mirrored left/right.
+```
+

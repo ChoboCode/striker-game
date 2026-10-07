@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base href="../">
+<title>IRON STRIKER · 보스 탄막 미리보기</title>
+<style>
+@font-face{font-family:Arcade;src:url('assets/fonts/neodgm.woff2')}*{box-sizing:border-box}body{margin:0;background:#080d17;color:#dce7f5;font:15px Arcade,system-ui}main{max-width:1040px;margin:auto;padding:28px;display:grid;grid-template-columns:minmax(260px,1fr) minmax(300px,480px);gap:28px}a{color:#91daca}h1{font-size:30px;line-height:1.3}p{color:#9aafc5;line-height:1.65}.controls{display:flex;flex-direction:column;gap:17px;align-self:center}label{display:block;color:#cde2f8;margin-bottom:7px}select,button{font:inherit;background:#14263b;color:#dce7f5;border:1px solid #365779;border-radius:8px;min-height:42px;padding:10px;cursor:pointer}select{width:100%}button:focus-visible,select:focus-visible{outline:3px solid #8ae4ce;outline-offset:2px}.row{display:flex;gap:7px}.row button{flex:1}button[aria-pressed=true]{background:#20483f;border-color:#9ae2c9;color:#d6ffee}.note{padding:14px;border-left:3px solid #65abc9;background:#102033}#phaseName{font-size:23px;color:#bfe9ff;margin:0}canvas{display:block;width:100%;aspect-ratio:2/3;background:#080d17;border:1px solid #30475e;border-radius:12px;touch-action:none}#status{font-size:13px;min-height:22px}#aircraft{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}#aircraft figure{margin:0;text-align:center;font-size:12px;color:#aac0d5}#aircraft canvas{width:76px;height:76px;border:0;border-radius:8px;background:#142031}#aircraft figcaption{margin-top:5px}@media(max-width:760px){main{grid-template-columns:1fr;padding:18px;max-width:520px}.controls{gap:12px}h1{font-size:25px;margin:8px 0}p{margin:5px 0}.note{padding:10px}}
+</style>
+</head>
+<body><main>
+<section class="controls">
+<a href="index.html">← 게임 시작 화면</a>
+<h1>일곱 전선<br>보스 탄막 미리보기</h1>
+<p>전장과 페이즈를 골라 사격 모양을 비교하세요. 아래쪽 기체를 드래그하면 조준 방향이 달라집니다.</p>
+<div><label for="stageSelect">전장</label><select id="stageSelect"></select></div>
+<div><label>페이즈</label><div class="row" id="phaseButtons"><button type="button" data-phase="1" aria-pressed="true">PHASE 1</button><button type="button" data-phase="2" aria-pressed="false">PHASE 2</button><button type="button" data-phase="3" aria-pressed="false">PHASE 3</button></div></div>
+<div><label>난이도</label><div class="row" id="modeButtons"><button type="button" data-mode="easy" aria-pressed="true">EASY</button><button type="button" data-mode="hard" aria-pressed="false">HARD</button></div></div>
+<div class="note"><p id="phaseName">준비 중</p><p id="description">실전에서 페이즈는 보스 체력 66%·33%에서 바뀝니다.</p></div>
+<div class="row"><button type="button" id="togglePlay">잠시 멈춤</button><button type="button" id="restart">다시 보기</button></div>
+<p>미리보기에서는 피격·격파가 없습니다. 탄벽의 점선은 그 탄벽에 있는 빈 통로를 표시합니다.</p>
+<div id="aircraft" aria-label="이 전장의 일반 비행체"></div>
+<a href="tools/seven-stage-art.html">밀림·화산 원화 보기 →</a>
+</section>
+<section><canvas id="preview" width="480" height="720" aria-label="보스 탄막 미리보기"></canvas><p id="status" role="status">이미지 준비 중…</p></section>
+</main>
+<script src="js/assets.js"></script><script src="js/stages.js"></script><script src="js/difficulty.js"></script><script src="js/boss-art.js"></script><script src="js/bosses.js"></script>
+<script>
+'use strict';
+(async function(){
+  const canvas=document.getElementById('preview'),ctx=canvas.getContext('2d'),W=480,H=720;
+  let stageIndex=0,phase=1,mode='easy',boss=null,shots=[],escorts=[],serial=0,paused=false,last=0,time=0,emitted=0;
+  const target={x:240,y:610},select=document.getElementById('stageSelect'),status=document.getElementById('status');
+  const tips={breakwater:'교대 조준 → 이동 통로가 있는 탄벽 → 회전 나선.',dune:'고정 조준 주포 → 좌우 진자 사격 → 철도 탄벽.',gemini:'교대 저격 → 좌우 교차 사격 → 흔들리는 창탄.',canopy:'한쪽 날개 조준 → 양갈래 사격 → 나비처럼 펼쳐지는 날개탄.',caldera:'고리탄 → 꽃잎탄과 조준 예고 → 꽃잎·나선 교대.',nightark:'전방 부채 → 함교 꽃잎 → 세 갈래 사격과 통로 탄벽.',regent:'넓은 주포 → 동력로 꽃잎 → 반대로 도는 이중 나선.'};
+  for(const st of Stages.STAGES){const option=document.createElement('option');option.value=st.no-1;option.textContent=st.no+' · '+st.name;select.appendChild(option);}
+  const api={W,H,get bulletMul(){return Stages.STAGES[stageIndex].bulletMul;},get attackRate(){return Difficulty.get(mode).attackRate;},
+    patternCount:n=>Difficulty.patternCount(n,mode),aimAngle:(x,y)=>Math.atan2(target.y-y,target.x-x),
+    eShot:(x,y,vx,vy,style)=>{if(shots.length>=240)return null;const speed=Difficulty.get(mode).bulletSpeed,b={x,y,vx:vx*speed,vy:vy*speed,style};shots.push(b);emitted++;return b;},
+    spawnMini:(x,y)=>{escorts.push({x,y,age:0,ct:1.0});},shake:()=>{},boom:()=>{},onBossPhase:()=>{shots=[];}};
+  function drawAircraft(){
+    const list=document.getElementById('aircraft');list.textContent='';
+    const kinds=[...new Set(Stages.STAGES[stageIndex].script.filter(e=>e.kind==='formation').map(e=>Stages.enemyForStage(e.type,stageIndex).art))];
+    const names={mini:'소형기',medium:'중형기',s3fighter:'설상 요격기',canopyFighter:'밀림 요격기',canopyGunship:'밀림 중무장기',calderaFighter:'화산 요격기',calderaBomber:'화산 폭격기',stage4Vtol:'쌍로터 공격기',s5fighter:'강철 요격기',s5heavy:'중장 요격기',s5gunship:'중무장기'};
+    for(const kind of kinds){const f=document.createElement('figure'),c=document.createElement('canvas'),caption=document.createElement('figcaption');c.width=c.height=110;const art=Assets.body(kind,'neutral',88);if(art)c.getContext('2d').drawImage(art.c,55-art.px,55-art.py);caption.textContent=names[kind]||kind;f.append(c,caption);list.appendChild(f);}
+  }
+  async function change(index,nextPhase,nextMode){
+    const request=++serial;boss=null;status.textContent='전장 준비 중…';
+    stageIndex=index;phase=nextPhase;mode=Difficulty.normalize(nextMode);
+    await Assets.loadBg(Stages.STAGES[index].bg);if(request!==serial)return;
+    stageIndex=index;phase=nextPhase;mode=Difficulty.normalize(nextMode);select.value=String(index);
+    boss=Bosses.create(Stages.STAGES[index].boss,index,Difficulty.get(mode));boss.state='fight';boss.x=W/2;boss.y=boss.entryY;boss.hp=boss.maxHp*[.9,.5,.2][phase-1];
+    shots=[];escorts=[];time=0;emitted=0;last=0;
+    document.querySelectorAll('[data-phase]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.phase===phase)));
+    document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
+    document.getElementById('phaseName').textContent=boss.def.phaseNames[phase-1];
+    document.getElementById('description').textContent=tips[boss.id];drawAircraft();render();
+  }
+  function step(dt){
+    if(!boss)return;time+=dt;Bosses.update(boss,dt,api);
+    for(let i=escorts.length-1;i>=0;i--){const e=escorts[i];e.age+=dt;e.y+=150*dt;e.ct-=dt*api.attackRate;if(e.ct<=0&&e.y<H-120){const a=api.aimAngle(e.x,e.y),sp=135*api.bulletMul;api.eShot(e.x,e.y,Math.cos(a)*sp,Math.sin(a)*sp,'eSmall');e.ct=1.8;}if(e.y>H+60)escorts.splice(i,1);}
+    for(let i=shots.length-1;i>=0;i--){const s=shots[i];s.x+=s.vx*dt;s.y+=s.vy*dt;if(s.x< -40||s.x>W+40||s.y< -40||s.y>H+40)shots.splice(i,1);}
+  }
+  function render(){
+    ctx.clearRect(0,0,W,H);const bg=Assets.bgTile(Stages.STAGES[stageIndex].bg,W,H);if(bg)ctx.drawImage(bg,0,0);ctx.fillStyle='#07132155';ctx.fillRect(0,0,W,H);
+    if(boss){Bosses.draw(boss,ctx,api);for(const e of escorts){const art=Assets.body('mini','neutral',42);if(art)ctx.drawImage(art.c,e.x-art.px,e.y-art.py);}for(const s of shots){const art=Assets.bullet(s.style);ctx.drawImage(art,s.x-art.width/2,s.y-art.height/2);}const player=Assets.body('player','neutral',48);if(player)ctx.drawImage(player.c,target.x-player.px,target.y-player.py);}
+    ctx.fillStyle='#080e1dd9';ctx.fillRect(0,0,W,36);ctx.font='14px Arcade';ctx.fillStyle='#c8e5ef';ctx.fillText(Difficulty.get(mode).label+' · STAGE '+(stageIndex+1)+' · PHASE '+phase,14,24);
+    status.textContent=(paused?'일시정지 · ':'')+(stageIndex+1)+'탄 · '+Difficulty.get(mode).label+' · '+(boss?boss.def.phaseNames[phase-1]:'준비 중');
+  }
+  select.addEventListener('change',()=>change(+select.value,phase,mode));
+  document.querySelectorAll('[data-phase]').forEach(b=>b.addEventListener('click',()=>change(stageIndex,+b.dataset.phase,mode)));
+  document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>change(stageIndex,phase,b.dataset.mode)));
+  document.getElementById('restart').addEventListener('click',()=>change(stageIndex,phase,mode));
+  document.getElementById('togglePlay').addEventListener('click',function(){paused=!paused;this.textContent=paused?'계속 보기':'잠시 멈춤';render();});
+  function drag(e){const r=canvas.getBoundingClientRect();target.x=Math.max(20,Math.min(W-20,(e.clientX-r.left)*W/r.width));target.y=Math.max(H*.48,Math.min(H-36,(e.clientY-r.top)*H/r.height));render();}
+  canvas.addEventListener('pointerdown',e=>{canvas.setPointerCapture(e.pointerId);drag(e);});canvas.addEventListener('pointermove',e=>{if(canvas.hasPointerCapture(e.pointerId))drag(e);});
+  await document.fonts.ready;await Assets.loadCore();await change(0,1,'easy');
+  window.PatternPreview={change,step,tick(n){for(let i=0;i<n;i++)step(1/60);render();},stats:()=>({stage:stageIndex+1,phase,mode,shots:shots.length,emitted,boss:boss&&boss.id,finite:shots.every(s=>Number.isFinite(s.x+s.y+s.vx+s.vy))})};
+  function loop(now){const dt=Math.min(.05,last?(now-last)/1000:0);last=now;if(!paused)step(dt);render();requestAnimationFrame(loop);}
+  if(!new URLSearchParams(location.search).has('manual'))requestAnimationFrame(loop);
+})().catch(err=>{document.getElementById('status').textContent='미리보기를 준비하지 못했습니다: '+err.message;console.error(err);});
+</script>
+</body></html>

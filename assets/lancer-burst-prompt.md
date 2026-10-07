@@ -1,0 +1,8 @@
+# 랜서 필살기 전용 원화
+
+내장 ImageGen으로 제작한 4프레임 시트. 최종 파일: `lancer-burst-sheet-v1.png`.
+기수 응축구·광선 몸통·선두를 나눠 렌더링하여 발사 초기에도 응축구가 길게 늘어나지 않게 한다. 기존 지속시간·공격 판정·조준을 유지한다.
+
+## 제작 프롬프트
+
+Production 2D arcade vertical-shooter ultimate energy cannon VFX sprite sheet. Actual transparent RGBA background, no scenery. Square 2048x2048 canvas divided into EXACTLY FOUR equal vertical columns, one complete tall upward-firing energy beam per column; FOUR subtle successive animation frames of the SAME beam, perfectly registered. Each cell 512x2048. In every cell: compact spherical white-hot emitter centered x=50%, y=87%; a powerful golden-white energy column extends straight UP from that emitter to a rounded leading energy front at y=9%. Broad beam body width 45% of cell, irregular turbulent amber-gold corona and forked lightning around the body within central 85% cell width. The emitter is a turbulent luminous energy sphere, not a circular symbol, about 48% cell width, with short outward plasma flares. Beam inner core textured creamy white with fine streaming gold filaments, NOT a uniform flat white rectangle. Beam exterior ragged feathered translucent light, curling golden streaks, tiny brilliant sparks. Painted premium game VFX, high-energy directional flow toward top. Animation frames keep EXACT same emitter/head positions, body thickness and silhouette envelope; change only plasma filaments and small electric arcs subtly. No perspective, no diagonal orientation, no aircraft, no text, no dividing lines, no borders, no geometric rings, no giant explosions. Leave at least 6% completely transparent margin all around each column's effect. No background glow haze filling cells, only localized soft luminous edges. Deliver usable sprite sheet, not concept art.

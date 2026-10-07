@@ -1,0 +1,41 @@
+[
+  {
+    "key": "boss-heavy-blast",
+    "file": "boss-heavy-blast-v2.webp",
+    "width": 1024,
+    "prompt": "Use case: stylized-concept\nAsset type: production transparent raster animation sprite sheet, original overhead aircraft arcade game.\nInput images: Image 1 existing small explosion sheet is the game's texture/rendering reference; Image 2 naval fortress is the metal material and top-down camera reference. Reference images only, do not reproduce ships.\nPrimary request: A NEW restrained hull-breaking EXPLOSION sheet that belongs to this exact game's gritty detailed prerendered 2D art. ONE square sheet, EXACT 4 columns and 4 rows, SIXTEEN sequential frames in reading order. Equal square cells, effect centered at same origin, 12% clear cell margins, authentic transparent alpha, no grid or text.\nStyle: overhead orthographic 90-degree camera looking DOWN onto spreading combustion and torn machinery. Crisp hand-painted prerendered arcade shading, textured charcoal and gunmetal, angular little hot metal flakes. Compact irregular yellow-white flashes, amber broken flame tongues and clusters of opaque soot. Hard readable contours and subtle internal shading matching reference sprites. Small controlled highlights. NO photorealistic Hollywood fireball, no spherical 3D mushroom or billowing orange cauliflower, no glossy nebulous plasma, no lens effects, no uniform circular disk, no bright long starburst spikes.\nSequence: 1-3 small asymmetric ignition flashes; 4-6 flame splits into several uneven orange-white lobes with broken black gaps; 7-9 largest jagged fiery rupture with a dark gunmetal center visible between flame clusters; 10-12 flames diminish quickly, several fragmented charcoal wisps and tiny fading amber flecks; 13-16 soot fragments separate, become sparse and transparent, last frame only a few faint residual wisps. The effect reaches its largest width only in the middle and visibly dissipates. Keep silhouettes consistent across adjacent frames and organic movement, no sudden reset. No solid glowing halo or drawn shockwave ring. No aircraft, ship, ground, UI, labels, background or checkerboard. Pure top-down VFX, true transparent outside effect.",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-f788d345-a04b-4861-bafb-45da7534b08d.png",
+    "references": [
+      "assets/explosion.png",
+      "assets/stage4-boss-nightark.png"
+    ],
+    "tool": "built-in image_gen",
+    "date": "2026-10-07"
+  },
+  {
+    "key": "boss-reactor-blast",
+    "file": "boss-reactor-blast-v2.webp",
+    "width": 1024,
+    "prompt": "Use case: stylized-concept\nAsset type: transparent production animation sprite sheet for existing top-down arcade aircraft game.\nInput images: Image 1 newly made heavy explosion is the EXACT texture, overhead angle, shading and flame shape guide. Image 2 Iron Regent fortress is the existing metal sprite art reference only.\nPrimary request: Create a matching REACTOR rupture variation, not a different style. ONE square transparent sheet, EXACTLY 4 columns x 4 rows, SIXTEEN sequential frames in reading order. Each frame same center, equal square cell, 12% clear margins, authentic alpha. No grid, text, numbers or checkerboard.\nStyle: crisp gritty prerendered 2D arcade sprite viewed orthographically straight down, textured angular gunmetal debris and dark charcoal smoke, fractured amber-orange fire clusters with small ivory hot cores. MATCH reference 1's compact sharp rendering. Make the final boss distinct ONLY with a small icy pale-blue ignition core and a few short cyan electrical fractures AMONG otherwise orange fire and charcoal. Blue should occupy at most about 10 percent of the visible explosion and cool quickly. Never a cyan disk, ring or blue aura. No fantasy magic, neon plasma, camera facing spherical fireball, cinematic bloom, lens flare, long starburst spikes or glossy smoke balls.\nSequence 1-3 small white-blue center with short sparks; 4-6 irregular yellow-amber flame clusters rupture between dark metal pieces; 7-9 largest fragmented gunmetal/orange rupture with small residual icy highlights; 10-12 darker fragmented smoke and fading orange embers; 13-16 small separating sparse soot wisps fading nearly to transparent. Each next frame evolves from the last, no reset. The largest frames stay fully inside their cell, don't touch neighbors. NO hull, terrain, characters, UI, background, shockwave ring or text. Pure VFX matching existing game sprites.",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-e577517b-4859-4b2b-b027-cbf1c80238fb.png",
+    "references": [
+      "boss-heavy-blast-v2",
+      "assets/s5-boss.png"
+    ],
+    "tool": "built-in image_gen",
+    "date": "2026-10-07"
+  },
+  {
+    "key": "boss-metal-debris",
+    "file": "boss-metal-debris-v2.webp",
+    "width": 512,
+    "prompt": "Use case: stylized-concept\nAsset type: transparent four-sprite debris atlas for existing overhead aircraft shooter.\nInput images: Image 1 naval fortress and Image 2 Iron Regent show the exact gritty gunmetal texture, overhead camera and sharp prerendered game shading to match. Use references for material/style, do not redraw whole ships.\nCreate ONE square transparent sprite atlas with EXACTLY 2 columns x 2 rows, FOUR isolated different broken metal fragments, one centered object per equal square cell, at least 22% clear margins. Genuine transparent alpha, no grid or labels. These are SMALL angular broken SHIP HULL pieces seen orthographically from straight above: top left torn long narrow riveted armor panel; top right bent corner of a rectangular cannon mounting bracket; bottom left thin snapped truss with two broken crossbars; bottom right severed short hollow cannon tube with cracked base. Each distinct fragment has a slender irregular silhouette, muted gunmetal gray with tiny warm amber scorch edges, crisp metallic worn shading matching references, no orange flames, no smoke, no glow, no spheres, no round craters, no rocks, no complete turrets or ships, no props/background/UI/text. Faces should be readable at only 18-30 pixels wide in the game. Small pieces of THIS metallic fortress, not a pile of wreckage.",
+    "source": "C:/Users/황성현/.codex/generated_images/01a10c93-2b1d-7bd1-aa85-d566308cd97d/exec-faac99a3-98ed-4895-b831-7117e99f819e.png",
+    "references": [
+      "assets/stage4-boss-nightark.png",
+      "assets/s5-boss.png"
+    ],
+    "tool": "built-in image_gen",
+    "date": "2026-10-07"
+  }
+]

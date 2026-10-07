@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>지상 시설 스프라이트 생성기</title>
+<style>
+  body { margin:0; padding:20px; background:#12161d; color:#e8eefc;
+         font-family:'Malgun Gothic',system-ui,sans-serif; }
+  h1 { font-size:20px; margin-bottom:6px; }
+  p { font-size:13px; color:#9fb4d8; line-height:1.6; margin-bottom:16px; }
+  .grid { display:flex; flex-wrap:wrap; gap:14px; }
+  .cell { background:#1b212b; border:1px solid #2a3547; border-radius:8px; padding:10px;
+          display:flex; flex-direction:column; align-items:center; gap:6px; width:150px; }
+  .cell canvas { width:128px; height:128px; background:
+      repeating-conic-gradient(#20262f 0% 25%, #262d38 0% 50%) 50%/16px 16px; border-radius:4px; }
+  .cell b { font-size:12px; }
+  .cell span { font-size:11px; color:#9fb4d8; }
+  button { margin-top:14px; padding:10px 18px; font-size:14px; font-family:inherit;
+           background:#2b5ea8; color:#fff; border:1px solid #4a7ec9; border-radius:6px; cursor:pointer; }
+</style>
+</head>
+<body>
+<h1>이전 지상 시설 스프라이트 생성기</h1>
+<p>
+  이전 코드 작화를 캔버스로 그려 PNG로 내보내는 보관용 도구입니다.
+  현재 게임은 <a href="ground-art.html">ImageGen 지상 원화</a>를 사용합니다.<br>
+  회전하는 부품(포신·레이더 접시)은 별도 레이어로 뽑아 게임에서 각도를 계산해 돌립니다.<br>
+  아래 버튼을 누르면 파일이 하나씩 저장됩니다. 저장한 PNG는 <code>striker-game/assets/ground/</code> 에 둡니다.
+</p>
+<div class="grid" id="grid"></div>
+<button type="button" id="save">전체 PNG 저장</button>
+<pre id="OUT" style="position:fixed;left:-9999px"></pre>
+
+<script src="sprite-defs.js"></script>
+<script>
+(function () {
+  const SIZE = 192;
+  const grid = document.getElementById('grid');
+  const made = [];
+
+  Object.keys(SpriteDefs).forEach(function (name) {
+    const def = SpriteDefs[name];
+    const c = document.createElement('canvas');
+    c.width = SIZE; c.height = SIZE;
+    def.draw(c.getContext('2d'), SIZE);
+
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    const label = document.createElement('b');
+    label.textContent = name;
+    const note = document.createElement('span');
+    note.textContent = def.note || '';
+    cell.appendChild(c); cell.appendChild(label); cell.appendChild(note);
+    grid.appendChild(cell);
+    made.push({ name: name, canvas: c });
+  });
+
+  /* headless 내보내기용: 데이터 URL 을 DOM 에 적어 둔다 */
+  const out = {};
+  made.forEach(function (m) { out[m.name] = m.canvas.toDataURL('image/png'); });
+  document.getElementById('OUT').textContent = JSON.stringify(out);
+
+  document.getElementById('save').addEventListener('click', function () {
+    made.forEach(function (m, i) {
+      setTimeout(function () {
+        const a = document.createElement('a');
+        a.href = m.canvas.toDataURL('image/png');
+        a.download = m.name + '.png';
+        a.click();
+      }, i * 120);
+    });
+  });
+})();
+</script>
+</body>
+</html>

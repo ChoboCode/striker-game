@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<base href="../">
+<title>IRON STRIKER · 지상 원화</title>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:clamp(18px,4vw,48px);background:#0b1119;color:#e9eef4;font-family:system-ui,sans-serif}main{max-width:1160px;margin:auto}a{color:#a3d9cb}h1{font-size:clamp(28px,4vw,46px);margin:22px 0 12px}p{color:#a8b6c5;line-height:1.7}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:24px 0}select,button{font:inherit;color:inherit;background:#192635;border:1px solid #43576a;border-radius:7px;padding:10px 14px}.view{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}.panel{background:#121c27;border:1px solid #2a3a49;border-radius:12px;padding:18px}.panel h2{font-size:19px;margin:0 0 14px}canvas{display:block;width:100%;height:auto;border-radius:7px}.layers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.layers figure{margin:0;text-align:center}.layers img{display:block;width:100%;aspect-ratio:1;object-fit:contain;background:repeating-conic-gradient(#182330 0 25%,#202e3b 0 50%) 0/20px 20px;border-radius:7px}figcaption{font-size:12px;color:#b5c4d3;margin:7px 0 0}#status{min-height:24px;font-size:13px}.hint{font-size:13px}@media(max-width:740px){.view{grid-template-columns:1fr}.panel{padding:12px}.layers{gap:10px}}
+</style>
+</head>
+<body><main>
+<a href="index.html">← 게임 시작 화면</a>
+<h1>지상 원화</h1>
+<p>대공포·전차·벙커·레이더·연료고·경비정. 포신은 목표를 따라 조준하고, 레이더 안테나는 회전합니다.</p>
+<div class="controls"><label for="stageSelect">전장</label><select id="stageSelect"></select><button id="togglePlay" type="button">멈춤</button></div>
+<div class="view">
+<section class="panel"><h2>전장 위에서 보기</h2><canvas id="preview" width="480" height="600" aria-label="지상 시설 6종의 조준과 회전 미리보기"></canvas><p class="hint">화면을 누르거나 드래그해 조준점을 옮겨보세요. 위쪽은 원화 확대, 아래쪽은 게임 크기입니다.</p><div id="status" role="status">원화를 불러오는 중…</div></section>
+<section class="panel"><h2>원화 9장</h2><div class="layers" id="layers"></div><p class="hint">받침·차체·회전 부품을 별도 원화로 제작해 움직임을 유지합니다.</p></section>
+</div>
+</main>
+<script src="js/assets.js"></script><script src="js/stages.js"></script>
+<script>
+(function(){
+ 'use strict';
+ const canvas=document.getElementById('preview'),ctx=canvas.getContext('2d'),select=document.getElementById('stageSelect');
+ const types=['aa','tank','bunker','radar','fuel','boat'],names=['대공포','전차','벙커','레이더','연료고','경비정'];
+ const layers=[['aa-base','대공포 받침'],['aa-gun','대공포 포신'],['tank-hull','전차 차체'],['tank-turret','전차 포탑'],['bunker','벙커'],['radar-base','레이더 받침'],['radar-dish','레이더 안테나'],['fuel','연료고'],['boat','경비정']];
+ let time=0,last=0,playing=true,stageIndex=0,ready=false,target={x:240,y:565};
+ for(const st of Stages.STAGES){const o=document.createElement('option');o.value=st.no-1;o.textContent=st.no+'탄 '+st.name;select.append(o);}
+ for(const [key,name] of layers){const f=document.createElement('figure'),img=document.createElement('img'),caption=document.createElement('figcaption');img.src='assets/ground/'+key+'-imagegen-v1.webp';img.alt=name;caption.textContent=name;f.append(img,caption);document.getElementById('layers').append(f);}
+ function drawStructure(def,x,y,width,angle){const base=Assets.body('ground',def.base,width);ctx.save();ctx.translate(x,y);ctx.drawImage(base.c,-base.px,-base.py);if(def.gun){const gun=Assets.body('ground',def.gun,width);ctx.rotate(angle);ctx.drawImage(gun.c,-gun.px,-gun.py);}ctx.restore();}
+ function render(){if(!ready)return;ctx.clearRect(0,0,480,600);const bg=Assets.bgTile(Stages.STAGES[stageIndex].bg,480,960),period=bg.height*(1-Assets.BG_OVERLAP),offset=time*8%period;for(let y=offset-period;y<600;y+=period)ctx.drawImage(bg,0,y);ctx.fillStyle='#08131b70';ctx.fillRect(0,0,480,600);
+  types.forEach((key,i)=>{const def=Stages.GROUND[key],x=80+i%3*160,y=100+Math.floor(i/3)*190;const angle=def.rot==='spin'?time*1.7:Math.atan2(target.y-y,target.x-x)+Math.PI/2;drawStructure(def,x,y,def.w*1.75,angle);ctx.textAlign='center';ctx.font='14px system-ui';ctx.fillStyle='#eef3f7';ctx.fillText(names[i],x,y+86);});
+  ctx.fillStyle='#061019a0';ctx.fillRect(0,408,480,192);ctx.textAlign='left';ctx.font='12px system-ui';ctx.fillStyle='#d1dde6';ctx.fillText('게임 크기',18,430);types.forEach((key,i)=>{const def=Stages.GROUND[key],x=80+i%3*160,y=467+Math.floor(i/3)*85;const angle=def.rot==='spin'?time*1.7:Math.atan2(target.y-y,target.x-x)+Math.PI/2;drawStructure(def,x,y,def.w,angle);});
+  ctx.strokeStyle='#ffce72';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(target.x,target.y,8,0,Math.PI*2);ctx.moveTo(target.x-13,target.y);ctx.lineTo(target.x+13,target.y);ctx.moveTo(target.x,target.y-13);ctx.lineTo(target.x,target.y+13);ctx.stroke();
+ }
+ function move(event){const r=canvas.getBoundingClientRect();target={x:(event.clientX-r.left)*480/r.width,y:(event.clientY-r.top)*600/r.height};render();}
+ canvas.style.touchAction='none';canvas.addEventListener('pointerdown',event=>{canvas.setPointerCapture(event.pointerId);move(event);});canvas.addEventListener('pointermove',event=>{if(event.buttons)move(event);});
+ async function change(index){ready=false;stageIndex=index;await Assets.loadBg(Stages.STAGES[index].bg);ready=true;document.getElementById('status').textContent='원화 로딩 완료 · '+Stages.STAGES[index].name;render();}
+ select.addEventListener('change',()=>change(Number(select.value)));
+ document.getElementById('togglePlay').addEventListener('click',()=>{playing=!playing;document.getElementById('togglePlay').textContent=playing?'멈춤':'계속 보기';});
+ function loop(now){if(playing)time+=Math.min(.05,(now-last)/1000);last=now;render();requestAnimationFrame(loop);}
+ window.GroundArtPreview={change,render,stats:()=>({ready,stage:stageIndex+1,playing,time,target}),drawStructure};
+ Assets.loadCore().then(()=>change(0)).then(()=>requestAnimationFrame(loop)).catch(error=>{document.getElementById('status').textContent=error.message;console.error(error);});
+})();
+</script>
+</body></html>

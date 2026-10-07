@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>IRON STRIKER · 아이언 스트라이커</title>
+<link rel="preload" href="assets/fonts/neodgm.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="game" width="480" height="720" aria-label="게임 화면"></canvas>
+
+    <!-- 터치 조작 버튼 -->
+    <div id="touchPad" class="hidden" aria-hidden="true">
+      <button type="button" id="btnCharge" class="padBtn" aria-label="차지샷 모으기">차지</button>
+      <button type="button" id="btnBomb" class="padBtn bomb" aria-label="폭탄 사용">폭탄<span id="bombCount">2</span></button>
+    </div>
+    <button type="button" id="btnPause" class="pausePad hidden" aria-label="게임 일시정지">Ⅱ</button>
+
+    <!-- 로딩 -->
+    <section class="screen" id="scLoad" aria-live="polite">
+      <h1 class="loadLogo">IRON STRIKER</h1>
+      <p class="lead">NOW LOADING…</p>
+      <div class="bar"><span id="loadBar"></span></div>
+      <p class="mini" id="loadMsg">0%</p>
+    </section>
+
+    <!-- 타이틀 -->
+    <section class="screen title" id="scTitle">
+      <div class="titleInner">
+        <div class="logo">
+          <h1 class="logoImgWrap">
+            <img class="logoImg" src="assets/title-logo.png" width="880" height="261" alt="IRON STRIKER">
+          </h1>
+          <p class="logoSub">7 STAGE CAMPAIGN · VERTICAL ARCADE SHOOTER</p>
+        </div>
+
+        <div class="scorePlate">
+          <span class="k">HI-SCORE</span><b id="tHi">0</b>
+          <em aria-hidden="true">·</em>
+          <span class="k">LAST SCORE</span><b class="last" id="tLast">0</b>
+        </div>
+
+        <div class="sectionTitle"><i></i><span>SELECT YOUR FIGHTER</span><i></i></div>
+
+        <div class="ships" role="group" aria-label="기체 선택">
+          <button type="button" class="ship" id="ship0" aria-pressed="true">
+            <span class="badge">✓ SELECTED</span>
+            <span class="art"><canvas id="shipArt0" width="84" height="84" aria-hidden="true"></canvas></span>
+            <b>STRIKER</b>
+            <span class="desc">연사형 · 한 점 화력</span>
+            <span class="stat"><i>화력</i><em data-fill="5"></em></span>
+            <span class="stat"><i>확산</i><em data-fill="2"></em></span>
+            <span class="stat"><i>차지</i><em data-fill="3"></em></span>
+          </button>
+          <button type="button" class="ship" id="ship1" aria-pressed="false">
+            <span class="badge">✓ SELECTED</span>
+            <span class="art"><canvas id="shipArt1" width="84" height="84" aria-hidden="true"></canvas></span>
+            <b>LANCER</b>
+            <span class="desc">확산형 · 넓은 탄막</span>
+            <span class="stat"><i>화력</i><em data-fill="3"></em></span>
+            <span class="stat"><i>확산</i><em data-fill="5"></em></span>
+            <span class="stat"><i>차지</i><em data-fill="4"></em></span>
+          </button>
+        </div>
+
+        <div class="difficultyPicker" role="group" aria-label="난이도 선택">
+          <button type="button" id="difficultyEasy" class="difficultyBtn" aria-pressed="true">EASY <span>가볍게 시작</span></button>
+          <button type="button" id="difficultyHard" class="difficultyBtn" aria-pressed="false">HARD <span>아케이드 도전</span></button>
+          <p id="difficultyDescription" aria-live="polite">적은 편대 · 느린 탄속 · 잔기 5 · 폭탄 3</p>
+        </div>
+
+        <button type="button" class="btn start" id="btnStart">
+          <i aria-hidden="true">»</i><span>PRESS START</span><i aria-hidden="true">«</i>
+        </button>
+        <button type="button" class="btn ghost" id="btnHelp">HOW TO PLAY</button>
+
+        <div class="opts">
+          <button type="button" class="chip" id="btnBgm" aria-pressed="true"><i aria-hidden="true">♪</i><span>BGM ON</span></button>
+          <button type="button" class="chip" id="btnSfx" aria-pressed="true"><i aria-hidden="true">🔊</i><span>SFX ON</span></button>
+          <button type="button" class="chip" id="btnQual" aria-pressed="true"><i aria-hidden="true">🖥</i><span>QUALITY HIGH</span></button>
+          <button type="button" class="chip" id="btnAutoCharge" aria-pressed="true"><i aria-hidden="true">⚡</i><span>AUTO CHARGE ON</span></button>
+        </div>
+
+        <div class="sectionTitle small"><i></i><span id="rankingMode">EASY HIGH SCORES</span><i></i></div>
+        <ol class="ranking" id="ranking" aria-label="최고 기록"></ol>
+      </div>
+    </section>
+
+    <!-- 조작 안내 -->
+    <section class="screen hidden" id="scHelp">
+      <h2>HOW TO PLAY</h2>
+      <ul class="keyList">
+        <li><b>← → ↑ ↓</b> 또는 <b>W A S D</b><span>이동</span></li>
+        <li><b>Z</b> 또는 <b>Space</b><span>발사 (길게 누르면 차지샷)</span></li>
+        <li><b>X</b><span>필살기 — 스트라이커: 전면 폭격 / 랜서: 응축 후 초고출력 에너지포 · 연출 중 무적</span></li>
+        <li><b>Shift</b><span>저속 이동 (정밀 회피)</span></li>
+        <li><b>P</b> 또는 <b>Esc</b><span>일시정지</span></li>
+        <li><b>드래그</b><span>모바일·마우스 이동 (자동 발사)</span></li>
+      </ul>
+      <h2>TIPS</h2>
+      <ul class="tipList">
+        <li>군도 → 사막 → 빙하 → 밀림 → 화산 → 야간 공업지대 → 철의 요새, 총 <b>7개 스테이지</b>를 돌파하세요.</li>
+        <li>기체 중심의 작은 원만 피격 판정입니다. 날개는 스쳐도 안전합니다.</li>
+        <li><b>EASY</b>는 적 수·체력·탄속·사격 빈도가 낮고 잔기 5·폭탄 3·화력 2로 시작합니다. <b>HARD</b>는 기존 아케이드 규칙입니다. 기록은 모드별로 저장됩니다.</li>
+        <li><b>P</b> 아이템으로 화력이 오릅니다. 격추되면 EASY는 한 단계 감소하고 HARD는 화력이 1로 돌아갑니다.</li>
+        <li>적을 연속 격추하면 배율이 올라 점수가 크게 늘어납니다.</li>
+        <li>지상의 포탑·전차·경비정도 부술 수 있습니다. <b>연료 저장고</b>는 주변 시설까지 함께 터집니다.</li>
+        <li>특수 적은 꼬리에 표식이 붙습니다. <b>◆ 저격기</b>는 점선 조준선이 진해진 뒤 그 선을 따라 쏘고,
+            <b>▲ 자폭기</b>는 돌진선 방향으로 들이받으며, <b>■ 폭격기</b>가 떨어뜨린 폭탄은 점선 원에서 터집니다.</li>
+        <li>색이 다른 공격기도 있습니다. <b>✚ 빨강</b>은 조준선을 훑으며 5연사하니 훑는 반대쪽으로 빠지고,
+            <b>◎ 노랑</b>은 사방으로 퍼지는 탄을 쏘니 탄 사이로 빠져나가며,
+            <b>⬡ 초록</b>이 쏜 유도탄은 옆으로 크게 돌면 떨궈낼 수 있습니다.</li>
+        <li>조준선은 쏘기 직전 각도로 고정되므로, 선이 진해질 때 옆으로 비키면 피할 수 있습니다.</li>
+        <li>보스의 <b>포탑·주포 같은 부위</b>를 부수면 점수가 크게 오르지만, 남은 기체가 <b>폭주</b>해
+            부서진 자리에서 조준 없는 탄막이 쏟아지고 연사도 빨라집니다. 부술지 말지는 선택입니다.</li>
+        <li>기체는 타이틀에서 고릅니다. <b>스트라이커</b>는 한 점 화력, <b>랜서</b>는 넓은 탄막이 강합니다.</li>
+      </ul>
+      <button type="button" class="btn" id="btnHelpBack">BACK</button>
+    </section>
+
+    <!-- 일시정지 -->
+    <section class="screen hidden" id="scPause">
+      <h2>일시정지</h2>
+      <p id="pauseMode" class="mini">EASY</p>
+      <button type="button" class="btn" id="btnResume">계속하기</button>
+      <p id="resumeCountdown" class="resumeCountdown hidden" role="status" aria-live="assertive"></p>
+      <button type="button" class="btn ghost" id="btnQuit">타이틀로</button>
+    </section>
+
+    <!-- 스테이지 클리어 -->
+    <section class="screen hidden" id="scClear">
+      <h2 id="clearTitle">STAGE 1 CLEAR</h2>
+      <ul class="resultList" id="clearList"></ul>
+      <p id="clearCountdown" role="status">3초 후 다음 스테이지로 이동합니다.</p>
+    </section>
+
+    <!-- 게임 오버 -->
+    <section class="screen hidden" id="scOver">
+      <h2>격추당했습니다</h2>
+      <div class="scoreRow">
+        <div class="scoreBox"><b id="oScore">0</b><span>점수</span></div>
+        <div class="scoreBox"><b id="oStage">1</b><span>도달 스테이지</span></div>
+      </div>
+      <p class="mini" id="overMsg"></p>
+      <button type="button" class="btn" id="btnContinue">컨티뉴 (이 스테이지 처음부터)</button>
+      <button type="button" class="btn ghost" id="btnOverQuit">타이틀로</button>
+    </section>
+
+    <!-- 엔딩 -->
+    <section class="screen hidden" id="scEnd">
+      <h2>ALL CLEAR</h2>
+      <p id="endMode" class="mini">EASY · 7 STAGES</p>
+      <p class="lead">일곱 전선을 모두 돌파했습니다.</p>
+      <div class="scoreRow">
+        <div class="scoreBox"><b id="eScore">0</b><span>최종 점수</span></div>
+        <div class="scoreBox"><b id="eCont">0</b><span>사용한 컨티뉴</span></div>
+      </div>
+      <button type="button" class="btn" id="btnEndBack">타이틀로</button>
+    </section>
+  </div>
+
+  <p id="hint">ARROWS MOVE &middot; Z SHOT (HOLD TO CHARGE) &middot; X BOMB &middot; SHIFT SLOW &middot; P PAUSE</p>
+</div>
+
+<script>window.__NO_RAF = true;</script>
+<script src="js/assets.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/input.js"></script>
+<script src="js/stages.js"></script>
+<script src="js/difficulty.js"></script>
+<script src="js/enemy-patterns.js"></script>
+<script src="js/boss-art.js"></script>
+<script src="js/bosses.js"></script>
+<script src="js/boss-destruction.js"></script>
+<script src="js/bomb-run.js"></script>
+<script src="js/lancer-burst.js"></script>
+<script src="js/charge-fx.js"></script>
+<script src="js/__beam_art_review.js"></script>
+<pre id="SHOT" style="position:fixed;left:-9999px"></pre>
+<pre id="TESTOUT" style="position:fixed;left:-9999px"></pre>
+<script src="tools/harness.js"></script>
+</body>
+</html>

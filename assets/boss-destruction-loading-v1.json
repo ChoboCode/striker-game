@@ -1,0 +1,143 @@
+{
+  "format": "WebP quality 90, lossless alpha",
+  "generated": [
+    {
+      "file": "boss-heavy-blast-v1.webp",
+      "width": 1024,
+      "height": 1024,
+      "sourceBytes": 2083531,
+      "runtimeBytes": 578032,
+      "alphaPreserved": true
+    },
+    {
+      "file": "boss-reactor-blast-v1.webp",
+      "width": 1024,
+      "height": 1024,
+      "sourceBytes": 2301296,
+      "runtimeBytes": 603188,
+      "alphaPreserved": true
+    },
+    {
+      "file": "regent-damaged-v1.webp",
+      "width": 640,
+      "height": 640,
+      "sourceBytes": 2369524,
+      "runtimeBytes": 159384,
+      "alphaPreserved": true
+    }
+  ],
+  "optimized": [
+    {
+      "file": "boss-wreck-modules-runtime-v1.webp",
+      "width": 512,
+      "height": 512,
+      "sourceBytes": 456961,
+      "runtimeBytes": 119310,
+      "alphaPreserved": true,
+      "originalFile": "boss-wreck-modules-v1.png"
+    },
+    {
+      "file": "stage4-boss-nightark-runtime-v1.webp",
+      "width": 640,
+      "height": 640,
+      "sourceBytes": 507055,
+      "runtimeBytes": 121350,
+      "alphaPreserved": true,
+      "originalFile": "stage4-boss-nightark.png"
+    },
+    {
+      "file": "stage4-boss-nightark-damaged-runtime-v1.webp",
+      "width": 640,
+      "height": 640,
+      "sourceBytes": 518112,
+      "runtimeBytes": 114098,
+      "alphaPreserved": true,
+      "originalFile": "stage4-boss-nightark-damaged.png"
+    },
+    {
+      "file": "ground/aa-base-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 242232,
+      "runtimeBytes": 39744,
+      "alphaPreserved": true,
+      "originalFile": "ground/aa-base-imagegen-v1.png"
+    },
+    {
+      "file": "ground/aa-gun-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 103850,
+      "runtimeBytes": 18592,
+      "alphaPreserved": true,
+      "originalFile": "ground/aa-gun-imagegen-v1.png"
+    },
+    {
+      "file": "ground/tank-hull-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 195710,
+      "runtimeBytes": 30312,
+      "alphaPreserved": true,
+      "originalFile": "ground/tank-hull-imagegen-v1.png"
+    },
+    {
+      "file": "ground/tank-turret-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 90165,
+      "runtimeBytes": 16800,
+      "alphaPreserved": true,
+      "originalFile": "ground/tank-turret-imagegen-v1.png"
+    },
+    {
+      "file": "ground/radar-base-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 208028,
+      "runtimeBytes": 32676,
+      "alphaPreserved": true,
+      "originalFile": "ground/radar-base-imagegen-v1.png"
+    },
+    {
+      "file": "ground/radar-dish-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 96690,
+      "runtimeBytes": 17500,
+      "alphaPreserved": true,
+      "originalFile": "ground/radar-dish-imagegen-v1.png"
+    },
+    {
+      "file": "ground/bunker-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 254796,
+      "runtimeBytes": 40832,
+      "alphaPreserved": true,
+      "originalFile": "ground/bunker-imagegen-v1.png"
+    },
+    {
+      "file": "ground/fuel-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 214155,
+      "runtimeBytes": 36236,
+      "alphaPreserved": true,
+      "originalFile": "ground/fuel-imagegen-v1.png"
+    },
+    {
+      "file": "ground/boat-imagegen-v1.webp",
+      "width": 384,
+      "height": 384,
+      "sourceBytes": 119434,
+      "runtimeBytes": 19052,
+      "alphaPreserved": true,
+      "originalFile": "ground/boat-imagegen-v1.png"
+    }
+  ],
+  "existingBeforeBytes": 3007188,
+  "existingAfterBytes": 606502,
+  "existingReductionPercent": 79.8,
+  "newRuntimeBytes": 1340604
+}

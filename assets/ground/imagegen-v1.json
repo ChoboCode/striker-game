@@ -1,0 +1,146 @@
+[
+  {
+    "key": "aa-base",
+    "file": "aa-base-imagegen-v1.png",
+    "label": "대공포 받침",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: ONLY the FIXED BASE layer of a twin-barrel anti-aircraft turret, a circular heavy armored steel and concrete mounting platform, concentric steel ring and recessed central circular rotation bearing, asymmetrical small access vents around rim, orange safety tabs and thick foundation bolts. NO gun barrels and NO upper gun turret at all. Center bearing exactly at canvas center. Outer platform spans x=14%..86%, y=14%..86%.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-06c4815e-630f-4613-9176-b581faebf53f.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "scale": 0.8,
+    "runtimeFile": "aa-base-imagegen-v1.webp"
+  },
+  {
+    "key": "aa-gun",
+    "file": "aa-gun-imagegen-v1.png",
+    "label": "대공포 회전 포신",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: ONLY the ROTATING UPPER GUN layer of a twin-barrel anti-aircraft turret, two parallel clearly separated long cylindrical cannons pointing straight UP towards canvas top. Compact armored gun shield with angular steel plate and orange stripe, pivot at exact (50%,50%). Shield centered on pivot, covering x=33%..67%, y=42%..67%; barrels extend upward from y=43% to y=10%, at x=44% and x=56%. NO lower base, NO concrete, NO large mounting platform, NO pedestal. Transparent everywhere outside detached upper gun assembly.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-f8913d5a-f454-4cc1-bf75-ba61057773f4.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.715
+    ],
+    "scale": 0.66,
+    "runtimeFile": "aa-gun-imagegen-v1.webp"
+  },
+  {
+    "key": "tank-hull",
+    "file": "tank-hull-imagegen-v1.png",
+    "label": "전차 차체",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: ONLY the LOWER HULL layer of a tracked military tank, aligned vertically with vehicle front at canvas TOP. Two broad realistic dark caterpillar tracks along left and right, olive-gray layered armor decking with vent grilles and tow hooks, narrow orange identification stripe on rear. Center is an empty turret mounting socket exactly at (50%,50%). NO turret, NO cannon barrel, NO upper gun. Whole hull spans x=23%..77%, y=14%..86%, balanced top and bottom around canvas center.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-6410556e-9071-4311-af3b-097a5d991eed.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "scale": 0.85,
+    "runtimeFile": "tank-hull-imagegen-v1.webp"
+  },
+  {
+    "key": "tank-turret",
+    "file": "tank-turret-imagegen-v1.png",
+    "label": "전차 회전 포탑",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: ONLY the detached ROTATING UPPER TURRET layer of a tracked battle tank, one long clearly visible cannon barrel pointing straight UP toward canvas top. Angular low-profile olive-gray steel turret with panels, hatch, rangefinder, subtle orange stripe, round pivot exactly at (50%,50%). Turret body lies x=33%..67%, y=36%..66%. Single cannon extends from center-front y=38% to y=8%, barrel on x=50%. NO caterpillar tracks, NO lower hull, NO ground, NO base. Transparent outside the upper turret and barrel.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-1d1f309d-c3d0-4767-9f94-e185a17dc350.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.65
+    ],
+    "scale": 0.7,
+    "runtimeFile": "tank-turret-imagegen-v1.webp"
+  },
+  {
+    "key": "radar-base",
+    "file": "radar-base-imagegen-v1.png",
+    "label": "레이더 받침",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: ONLY the FIXED BASE layer of a radar installation, a circular low armored utility pedestal, ring of steel maintenance panels and large screws, small exterior electrical junction boxes and subtle amber warning strips. Bare central square mounting socket with small circular bearing at exactly (50%,50%). NO radar dish, NO aerial, NO antenna, NO upper radar equipment. Round complete platform spans x=18%..82%, y=18%..82%.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-2e518196-2af2-4af5-a5af-e37193c2ffde.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "scale": 0.7,
+    "runtimeFile": "radar-base-imagegen-v1.webp"
+  },
+  {
+    "key": "radar-dish",
+    "file": "radar-dish-imagegen-v1.png",
+    "label": "레이더 회전 안테나",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: ONLY the ROTATING RADAR UPPER ASSEMBLY sprite layer. Wide shallow oval military radar reflector, seen strictly from above, realistic gridded fine metal mesh with steel ribs and curved solid rim, horizontally wide x=16%..84%, y=28%..48%. Short narrow mounting arm extends down from reflector center x=50%, y=40% to a small round rotation joint at exact canvas center (50%,50%). Distinct dish, sturdy readable shape, silver-gray with muted olive rim, tiny amber warning indicator. NO lower installation base, NO large circular pedestal, NO ground. Detached upper dish has transparent pixels around it. Mechanical rotation axis is center of canvas, at the small round joint, not at center of reflector.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-f6d95dd1-a641-454f-9186-ac5d37237801.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.565
+    ],
+    "scale": 0.66,
+    "runtimeFile": "radar-dish-imagegen-v1.webp"
+  },
+  {
+    "key": "bunker",
+    "file": "bunker-imagegen-v1.png",
+    "label": "콘크리트 벙커",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: one compact HEXAGONAL concrete fortified bunker viewed straight down, heavy weathered reinforced concrete roof with angular steel edging, wide recessed dark gun embrasure across the central/front roof area, tiny amber-orange hazard strips on two corners, steel hatch and ventilation grilles, cracks and worn concrete but intact undamaged facility. Main silhouette centered, flat hexagon foundation spans x=14%..86%, y=14%..86%. No protruding long guns. Isolated entire bunker with no terrain surrounding it.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-e1b1f779-6481-4b7c-b428-0d244555ecec.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "scale": 0.74,
+    "runtimeFile": "bunker-imagegen-v1.webp"
+  },
+  {
+    "key": "fuel",
+    "file": "fuel-imagegen-v1.png",
+    "label": "연료 저장고",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: one small cylindrical industrial FUEL STORAGE TANK installation seen strictly straight down. Large circular weathered olive-gray metal storage tank top with concentric circular weld seams, small center service hatch, pipes entering at twelve and six o'clock, a short maintenance gantry across lower rim, unmistakable fuel installation instead of gun turret. One circular tank only, centered. Large tank spans x=15%..85%, y=15%..85%; narrow pipes stop within y=7%..93%. Amber-orange hazard bands and small valve assembly. No gun barrels, no antenna, no letters, no text signage.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-59cf6a74-614c-43e3-a1ce-5ce1baa30506.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "scale": 0.84,
+    "runtimeFile": "fuel-imagegen-v1.webp"
+  },
+  {
+    "key": "boat",
+    "file": "boat-imagegen-v1.png",
+    "label": "해상 경비정",
+    "prompt": "Use case: stylized-concept. Asset type: production raster sprite for an original polished vertical arcade shoot-em-up named Iron Striker. Orthographic camera looking STRAIGHT DOWN at the top surfaces, no isometric view, no visible side wall perspective. Detailed hand-painted realistic military industrial miniature, worn gunmetal gray and muted olive steel, restrained amber-orange safety markings, clear readable forms at 60 game pixels, defined panel seams, bolts, steel textures, subtle baked highlights from upper left, high quality finished illustration. Square canvas with genuinely transparent alpha background. Exactly one isolated sprite layer, no scenery, no text, no labels, no watermark, no frame, no projectiles, no fire, no smoke, no large cast shadow, no checkerboard painted into image. All complete within canvas with transparent padding; mechanical pivot at exact canvas center (50%,50%). Subject: one original compact armored PATROL BOAT, narrow elongated hull vertically aligned, pointed bow facing canvas TOP. Gunmetal-gray hull, side railings, olive steel armored cabin amidships, small bow deck cannon pointing up, rear engine vents and amber-orange safety stripe on stern, crisp realistic deck equipment. Vessel silhouette x=27%..73%, y=8%..92%, centered (50%,50%). Intact completed boat, not an aircraft. No water, no ocean, no foam, no wake, no dock; genuinely transparent around hull.",
+    "source": "C:\\Users\\황성현\\.codex\\generated_images\\01a10c93-2b1d-7bd1-aa85-d566308cd97d\\exec-d37eb29a-61b6-4946-b1c6-a24c0b6e5c43.png",
+    "width": 384,
+    "tool": "built-in image_gen",
+    "date": "2026-10-06",
+    "pivot": [
+      0.5,
+      0.5
+    ],
+    "scale": 0.94,
+    "runtimeFile": "boat-imagegen-v1.webp"
+  }
+]
